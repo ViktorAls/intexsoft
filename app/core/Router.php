@@ -43,13 +43,13 @@
 						$controller = new $path($this->params);
 						$controller->$action();
 					} else {
-						throw new \Exception('234',404);
+						header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
 					}
 				} else {
-					throw new \Exception('234',404);
+					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
 				}
 			} else {
-				throw new \Exception('234',404);
+				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
 			}
 		}
 	}
