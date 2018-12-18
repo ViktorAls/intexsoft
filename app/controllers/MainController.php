@@ -15,8 +15,7 @@
 		
 		
 		public function testAction(){
-			var_dump($_GET);
-			$this->views->render('Главная страница');
+			$this->views->render('Не главаня страница');
 		}
 		
 	}

@@ -4,16 +4,8 @@
 		 'controller'=>'main',
 		 'action'=>'index',
 	 ],
- 	'account/login'=>[
- 		'controller'=>'account',
-        'action'=>'login',
-    ],
 	 'main/index'=>[
 		 'controller'=>'main',
 		 'action'=>'test',
 	 ],
-	'news/show'=>[
-		'controller'=>'news',
-		'action'=>'show'
-	 ]
  ];
