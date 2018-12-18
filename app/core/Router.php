@@ -24,6 +24,7 @@
 		public function match()
 		{
 			$url = trim($_SERVER['REQUEST_URI'], '/');
+			$url = stristr($url, '?',true);
 			foreach ($this->routes as $route => $params) {
 				if (preg_match($route, $url, $matches)) {
 					$this->params = $params;
