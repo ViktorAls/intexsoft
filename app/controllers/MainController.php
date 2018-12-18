@@ -13,6 +13,7 @@
 			$this->views->render('Главная страница');
 		}
 		
+		
 		public function testAction(){
 			var_dump($_GET);
 			$this->views->render('Главная страница');
