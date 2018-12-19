@@ -10,7 +10,8 @@
 	{
 		public function before(){
 		  return [
-		  	'index'=>['user'],
+		  	'index'=>['admin'],
+			  'test'=>['user']
 		  ];
 		}
 		
@@ -20,8 +21,9 @@
 		}
 		
 		public function testAction(){
+			if (empty($_SERVER['role'])){
 			$user = new User('admin','admin');
-		    $user->Login();
+		    $user->Login();}
 			$this->views->render('Не главаня страница');
 		}
 		

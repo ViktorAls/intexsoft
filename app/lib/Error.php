@@ -10,8 +10,9 @@
 	
 	
 	use app\core\View;
+	use app\lib\interf\ErrorInterface;
 	
-	class Error
+	class Error implements ErrorInterface
 	{
 		const ERROR = [
 			'301' => ['title' => 'Moved Permanently', 'message' => 'Документ или страница были перемещены на другой адрес навсегда.'],
