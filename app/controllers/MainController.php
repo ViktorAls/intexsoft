@@ -9,7 +9,7 @@
 	{
 		
 		public function indexAction(){
-   
+
 			$this->views->render('Главная страница');
 		}
 		

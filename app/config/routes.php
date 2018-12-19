@@ -4,7 +4,7 @@
 		 'controller'=>'main',
 		 'action'=>'index',
 	 ],
-	 'main/index'=>[
+	 'main/test'=>[
 		 'controller'=>'main',
 		 'action'=>'test',
 	 ],
