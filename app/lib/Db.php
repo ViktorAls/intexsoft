@@ -26,6 +26,7 @@
 		
 		protected function getPDOSettings()
 		{
+			
 			$config = include 'app\config\Db.php';
 			$result['dsn'] = "{$config['type']}:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
 			$result['user'] = $config['user'];
@@ -38,11 +39,11 @@
 			
 			if(is_null($params)){
 				$stmt = $this->pdo->query($query);
-				return $stmt->fetchAll();
+				return $stmt->fetchAll(PDO::FETCH_UNIQUE);
 			}
 			$stmt = $this->pdo->prepare($query);
 			$stmt->execute($params);
-			return $stmt->fetchAll();
+			return $stmt->fetchAll(PDO::FETCH_UNIQUE);
 			
 		}
 	}

@@ -10,24 +10,25 @@
 	{
 		public function before(){
 		  return [
-		  	'user'=>['index'],
-			'admin'=>['test','index'],
+		  	'index'=>['admin','user'],
 		  ];
 		}
 		
 		public function indexAction(){
-             $_SESSION['name']=4;
+			var_dump($_SESSION);
 			$this->views->render('Главная страница');
 		}
 		
 		
 		public function testAction(){
-			
-			$user = new User('admin','dfdf');
-			echo '<pre>';
-		echo	print_r($user->findUser());
-			echo '</pre>';
+			$user = new User('admin','admin');
+		    $user->Login();
+		    var_dump($_SESSION);
 			$this->views->render('Не главаня страница');
 		}
 		
+		public function logoutAction(){
+			User::logout();
+			$this->views->render('Не главаня страница');
+		}
 	}

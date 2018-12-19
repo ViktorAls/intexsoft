@@ -8,4 +8,8 @@
 		 'controller'=>'main',
 		 'action'=>'test',
 	 ],
+	 'main/logout'=>[
+		 'controller'=>'main',
+		 'action'=>'logout',
+	 ],
  ];

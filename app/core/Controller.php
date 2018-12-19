@@ -13,27 +13,37 @@
 	{
 		public $route;
 		public $views;
-		public $user = 'admin';
 		
 		public function __construct($route)
 		{
 			$this->route = $route;
 			$this->views = new View($route);
-			if($this->Access()){echo 'Доступ есть';}else{echo 'Доступ запрещен';}
+			if($this->Access()){
+				echo 'Доступ есть';
+			}
+			else{
+				echo 'Доступ запрещен';
+			}
 		}
 		
 		public function Access()
 		{
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
-				if ( array_key_exists($this->user,$role)==1 && count($role[$this->user]) !=0  ) {
-					if (in_array($this->route['action'],$role[$this->user])){
-						return true;
+				if ( array_key_exists($this->route['action'],$role)) {
+					if (in_array($_SESSION['role'],$role[$this->route['action']])){
+						$access = true;
 					} else {
-						return false;
+						$access = false;
 					}
+				} else {
+					$access = true;
 				}
-			} return false;
+			} else {
+				$access = true;
+			}
+			
+			return $access;
 		}
 	
 	}

@@ -9,6 +9,9 @@
 	namespace app\lib;
 	
 	
+	use app\core\View;
+	use PDO;
+	
 	class User
 	{
 		public $db;
@@ -21,25 +24,29 @@
 		   $this->setPassword($password);
 		}
 		
-		public function getRole(){
-			if (empty($_SESSION['role'])){
-				return $_SESSION['role'];
+		public function Login(){
+			if ($this->findUser() != 'gust'){
+				$_SESSION['role'] = $this->findUser();
+			}
+		}
+		
+		public static function logout()
+		{
+			if (!empty($_SESSION)) {
+				unset($_SESSION['role']);
 			}
 		}
 		
 		
-		private function setRole(){
-		
-		}
-		
 		public function findUser(){
-		  $re =  $this->db->execute('SELECT * FROM user WHERE name = "'.$this->name.'" and WHERE password = "'.$this->password.'"');
-		  if (empty($re)){
-		  	return false;
-		  }else {
-		  return $re;
+			$user = $this->db->execute('SELECT * FROM user where name = ? and password = ? LIMIT 1',[$this->name,$this->password]);
+			if(!$user){
+		    	return 'gust';
+		    } else {
+		        return $user[1]['rule'];
+		    }
 		}
-		}
+		
 		
 		public function setName($name){
 			$name = strip_tags($name);
@@ -50,6 +57,6 @@
 		public function setPassword($password){
 			$password = strip_tags($password);
 			$password = htmlentities($password, ENT_QUOTES, "UTF-8");
-			$this->password = htmlspecialchars($password, ENT_QUOTES);
+			$this->password = md5(htmlspecialchars($password, ENT_QUOTES));
 		}
 	}
