@@ -13,18 +13,19 @@
 	{
 		public $route;
 		public $path;
-		public $layout='default';
+		public $layout = 'default';
 		
 		public function __construct($route)
 		{
-	    	$this->route = $route;
-		    $this->path = $route['controller'].'/'.$route['action'];
+			$this->route = $route;
+			$this->path = $route['controller'] . '/' . $route['action'];
 		}
 		
-		public function render($title,$items=[]){
+		public function render($title, $items = [])
+		{
 			ob_start();
-			require 'app/views/'.$this->path.'.php';
+			require 'app/views/' . $this->path . '.php';
 			$content = ob_get_clean();
-			require 'app/views/layout/'.$this->layout.'.php';
+			require 'app/views/layout/' . $this->layout . '.php';
 		}
- }
+	}

@@ -20,8 +20,7 @@
 		{
 			$this->route = $route;
 			if(!$this->Access()){
-				Error::run();
-				exit();
+				Error::run(403);
 			}
 			$this->views = new View($route);
 		}

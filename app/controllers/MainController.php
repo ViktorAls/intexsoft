@@ -10,19 +10,18 @@
 	{
 		public function before(){
 		  return [
-		  	'index'=>['admin','user'],
+		  	'index'=>['user'],
 		  ];
 		}
 		
 		public function indexAction(){
-			var_dump($_SESSION);
+			
 			$this->views->render('Главная страница');
 		}
 		
 		public function testAction(){
 			$user = new User('admin','admin');
 		    $user->Login();
-		    var_dump($_SESSION);
 			$this->views->render('Не главаня страница');
 		}
 		

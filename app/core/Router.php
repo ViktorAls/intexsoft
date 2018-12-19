@@ -1,6 +1,8 @@
 <?php
 	namespace app\core;
 	
+	use app\lib\Error;
+	
 	class Router
 	{
 		
@@ -47,13 +49,13 @@
 						$controller = new $path($this->params);
 						$controller->$action();
 					} else {
-						header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+						Error::run(404);
 					}
 				} else {
-					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+					Error::run(404);
 				}
 			} else {
-				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+				Error::run(404);
 			}
 		}
 	}
