@@ -8,10 +8,6 @@
 	
 	namespace app\lib;
 	
-	
-	use app\core\View;
-	use PDO;
-	
 	class User
 	{
 		public $db;
@@ -20,8 +16,8 @@
 		public function __construct($name,$password)
 		{
 			$this->db= new Db();
-		   $this->setName($name);
-		   $this->setPassword($password);
+		    $this->setName($name);
+		    $this->setPassword($password);
 		}
 		
 		public function Login(){

@@ -9,21 +9,21 @@
 	namespace app\core;
 	
 	
-	abstract class Controller
+	use app\lib\Error;
+	
+	abstract class BaseController
 	{
 		public $route;
-		public $views;
+		protected $views;
 		
 		public function __construct($route)
 		{
 			$this->route = $route;
+			if(!$this->Access()){
+				Error::run();
+				exit();
+			}
 			$this->views = new View($route);
-			if($this->Access()){
-				echo 'Доступ есть';
-			}
-			else{
-				echo 'Доступ запрещен';
-			}
 		}
 		
 		public function Access()

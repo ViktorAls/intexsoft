@@ -3,10 +3,10 @@
 	namespace app\controllers;
 	
 	
-	use app\core\Controller;
+	use app\core\BaseController;
 	use app\lib\User;
 	
-	class MainController extends Controller
+	class MainController extends BaseController
 	{
 		public function before(){
 		  return [
@@ -18,7 +18,6 @@
 			var_dump($_SESSION);
 			$this->views->render('Главная страница');
 		}
-		
 		
 		public function testAction(){
 			$user = new User('admin','admin');
