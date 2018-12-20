@@ -19,7 +19,7 @@
 		public function __construct($route)
 		{
 			$this->route = $route;
-			if(!$this->Access()){
+			if (!$this->Access()) {
 				Error::run(403);
 			}
 			$this->views = new View($route);
@@ -30,10 +30,10 @@
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
 				if (empty($_SESSION['role'])) {
-					$_SESSION['role']='gust';
+					$_SESSION['role'] = 'gust';
 				}
-				if (array_key_exists($this->route['action'],$role)) {
-					if (in_array($_SESSION['role'],$role[$this->route['action']])){
+				if (array_key_exists($this->route['action'], $role)) {
+					if (in_array($_SESSION['role'], $role[$this->route['action']])) {
 						$access = true;
 					} else {
 						$access = false;
@@ -47,5 +47,5 @@
 			
 			return $access;
 		}
-	
+		
 	}

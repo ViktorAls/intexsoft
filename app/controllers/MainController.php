@@ -27,12 +27,13 @@
 				if (!empty($_POST['name']) || !empty($_POST['password'])) {
 					$user = new User($_POST['name'], $_POST['password']);
 					if (!$user->Login()) {
-						$this->views->render('Не главаня страница', ['error' => 'Не верный логин/пароль.']);
+						$this->views->render('Авторизация', ['error' => 'Не верный логин/пароль.']);
 					} else {
 						header("Location:/");
 					}
+				} else {
+					$this->views->render('Авторизация');
 				}
-				$this->views->render('Не главаня страница');
 			} else {
 				header("Location:/");
 			}
