@@ -11,7 +11,8 @@
 		{
 			return [
 				'index' => ['gust', 'admin', 'user'],
-				'test' => ['gust']
+				'login' => ['gust'],
+				'logout'=>['admin','user'],
 			];
 		}
 		

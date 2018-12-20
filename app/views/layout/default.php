@@ -12,6 +12,11 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">Главная страница</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" href="/orgab/ff">Все предприятия</a>
+        <? if($_SESSION['role'] == 'gust'):?>
+            <a class="p-2 text-dark" href="/main/login">Вход</a>
+        <?else:?>
+            <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
+        <?endif;?>
     </nav>
 </div>
 <div class="container">
