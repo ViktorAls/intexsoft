@@ -18,15 +18,12 @@
 		
 		public function __construct()
 		{
-			
 			$settings = $this->getPDOSettings();
 			$this->pdo = new \PDO($settings['dsn'], $settings['user'], $settings['pass'], null);
-			
 		}
 		
 		protected function getPDOSettings()
 		{
-			
 			$config = include 'app\config\Db.php';
 			$result['dsn'] = "{$config['type']}:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
 			$result['user'] = $config['user'];
