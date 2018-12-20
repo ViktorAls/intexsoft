@@ -29,7 +29,10 @@
 		{
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
-				if ( array_key_exists($this->route['action'],$role)) {
+				if (empty($_SESSION['role'])) {
+					$_SESSION['role']='gust';
+				}
+				if (array_key_exists($this->route['action'],$role)) {
 					if (in_array($_SESSION['role'],$role[$this->route['action']])){
 						$access = true;
 					} else {

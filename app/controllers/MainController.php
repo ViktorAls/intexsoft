@@ -10,8 +10,8 @@
 	{
 		public function before(){
 		  return [
-		  	'index'=>['admin'],
-			  'test'=>['user']
+		  	'index'=>['gust','admin','user'],
+			  'test'=>['gust']
 		  ];
 		}
 		
@@ -20,11 +20,14 @@
 			$this->views->render('Главная страница');
 		}
 		
-		public function testAction(){
-			if (empty($_SERVER['role'])){
-			$user = new User('admin','admin');
-		    $user->Login();}
-			$this->views->render('Не главаня страница');
+		public function loginAction(){
+			if ( empty($_SESSION['role']) || $_SESSION['role']=='gust'){
+				$user = new User('admin','admin');
+			    $user->Login();
+				$this->views->render('Не главаня страница');
+			} else {
+				header("Location:/");
+			}
 		}
 		
 		public function logoutAction(){

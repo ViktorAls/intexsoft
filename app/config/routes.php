@@ -4,9 +4,9 @@
 		 'controller'=>'main',
 		 'action'=>'index',
 	 ],
-	 'main/test'=>[
+	 'main/login'=>[
 		 'controller'=>'main',
-		 'action'=>'test',
+		 'action'=>'login',
 	 ],
 	 'main/logout'=>[
 		 'controller'=>'main',
