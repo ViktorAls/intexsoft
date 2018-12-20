@@ -42,7 +42,6 @@
 		public function findUser()
 		{
 			$user = $this->db->execute('SELECT * FROM user where name = ? and password = ? LIMIT 1', [$this->name, $this->password]);
-
 			if (!$user) {
 				return 'gust';
 			} else {
