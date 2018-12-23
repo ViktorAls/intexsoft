@@ -4,7 +4,7 @@
 	
 	
 	use app\core\BaseController;
-	use app\lib\Db;
+	use app\core\models\UserModel;
 	
 	class WorkerController extends BaseController
 	{
@@ -16,8 +16,9 @@
 		}
 		
 		public function informationAction(){
-			$organization= new Db();
-			var_dump($organization->innerJoin('organizations','worker','id','id_organization'));
+
+			$new = new UserModel();
+			
 			$this->views->render('Попадёт только работник');
 		}
 	}
