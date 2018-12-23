@@ -12,4 +12,16 @@
 		 'controller'=>'main',
 		 'action'=>'logout',
 	 ],
+	 'admin/worker'=>[
+		 'controller'=>'main',
+		 'action'=>'worker',
+	 ],
+	 'admin/organization'=>[
+		 'controller'=>'admin',
+		 'action'=>'organization',
+	 ],
+	 'worker/my'=>[
+		 'controller'=>'admin',
+		 'action'=>'organization',
+	 ],
  ];
