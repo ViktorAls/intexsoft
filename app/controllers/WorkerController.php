@@ -17,7 +17,7 @@
 		
 		public function informationAction(){
 			$organization= new Db();
-			$organization->findAll('');
+			var_dump($organization->innerJoin('organizations','worker','id','id_organization'));
 			$this->views->render('Попадёт только работник');
 		}
 	}
