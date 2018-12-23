@@ -25,16 +25,7 @@
 <div class="container">
 
     <?=$content?>
-
-    <footer class=" my-md-5 border-top">
-    <div class="row">
-        <div class="col-md-3 col-md-offset-3">
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="/">Тестовое задание.</a></li>
-            </ul>
-        </div>
-    </div>
-    </footer>
+    
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

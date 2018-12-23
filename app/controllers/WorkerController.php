@@ -4,7 +4,6 @@
 	
 	
 	use app\core\BaseController;
-	use app\core\models\UserModel;
 	
 	class WorkerController extends BaseController
 	{
@@ -16,9 +15,6 @@
 		}
 		
 		public function informationAction(){
-
-			$new = new UserModel();
-			
 			$this->views->render('Попадёт только работник');
 		}
 	}
