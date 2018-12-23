@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d6053ef-817d-4c68-8e9e-547fe0952249" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/admin/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/organization.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/organization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/worker/information.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/worker/information.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/view.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/admin/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="476">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
             </state>
           </provider>
         </entry>
@@ -165,9 +160,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="188" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="745" />
   </component>
@@ -304,7 +298,7 @@
       <workItem from="1545136559771" duration="56787000" />
       <workItem from="1545311287132" duration="8994000" />
       <workItem from="1545577340494" duration="9553000" />
-      <workItem from="1545590205410" duration="5738000" />
+      <workItem from="1545590205410" duration="6373000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1545174938945</created>
@@ -324,14 +318,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81072000" />
+    <option name="totallyTimeSpent" value="81707000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-7" y="0" width="697" height="745" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.19894099" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.41287285" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -572,8 +566,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="476">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>

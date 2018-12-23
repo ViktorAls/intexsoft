@@ -8,13 +8,13 @@
 		</thead>
 		<tbody>
 		<tr>
-			<th scope="row">Название</th>
+			<th scope="row">ООО 'Красный'</th>
 		</tr>
 		<tr>
-			<th scope="row">ogrn</th>
+			<th scope="row">ogrn: 1234567890</th>
 		</tr>
 		<tr>
-			<th scope="row">oktmo</th>
+			<th scope="row">oktmo: 123456789</th>
 		</tr>
 		</tbody>
 	</table>
@@ -24,29 +24,26 @@
 		<thead class="thead-default">
 		<tr>
 			<th>#</th>
-			<th>ФИО работника</th>
-			<th>Last Name</th>
-			<th>Username</th>
+			<th>Работник</th>
+			<th>Дата рождения</th>
+			<th>inn</th>
+			<th>snils</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr>
 			<th scope="row">1</th>
-			<td>Mark</td>
-			<td>Otto</td>
-			<td>@mdo</td>
+			<td><a href="/worker/">Иванов Иван Иванович</a></td>
+			<td>10-06-1998</td>
+			<td>10230123</td>
+			<td>1023013242</td>
 		</tr>
 		<tr>
 			<th scope="row">2</th>
-			<td>Jacob</td>
-			<td>Thornton</td>
-			<td>@fat</td>
-		</tr>
-		<tr>
-			<th scope="row">3</th>
-			<td>Larry</td>
-			<td>the Bird</td>
-			<td>@twitter</td>
+			<td><a href="">Иванов Иван Иванович</a></td>
+			<td>10-06-1998</td>
+			<td>10230123</td>
+			<td>1023013242</td>
 		</tr>
 		</tbody>
 	</table></div>
