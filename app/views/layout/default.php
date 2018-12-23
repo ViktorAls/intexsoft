@@ -11,12 +11,15 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">Главная страница</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="/">Все предприятия</a>
-        <? if($_SESSION['role'] == 'gust'):?>
-            <a class="p-2 text-dark" href="/main/login">Вход</a>
-        <?else:?>
+	    <? if($_SESSION['role'] == 'admin'):?>
+            <a class="p-2 text-dark" href="/admin/organization">Оргинизации</a>
             <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
-        <?endif;?>
+	    <?elseif ($_SESSION['role'] == 'user'):?>
+            <a class="p-2 text-dark" href="/worker/information">Информация о себе</a>
+            <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
+	    <?else:?>
+            <a class="p-2 text-dark" href="/main/login">Вход</a>
+	    <?endif;?>
     </nav>
 </div>
 <div class="container">
@@ -27,7 +30,7 @@
     <div class="row">
         <div class="col-md-3 col-md-offset-3">
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Resource</a></li>
+                <li><a class="text-muted" href="/">Тестовое задание.</a></li>
             </ul>
         </div>
     </div>

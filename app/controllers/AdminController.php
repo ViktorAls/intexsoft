@@ -14,8 +14,23 @@
 	class AdminController extends BaseController
 	{
 		
-		public function organizationAdmin()
+		public function before()
 		{
+			return [
+				'organization' => ['admin'],
+				'worker'=>['admin'],
+			];
+		}
 		
+		public function organizationAction()
+		{
+		  $this->views->render('Попадёт только админ');
+		}
+		
+		public function workerAction()
+		{
+			$this->views->render('Попадёт только админ');
+			
 		}
 	}
+	

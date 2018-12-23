@@ -13,7 +13,7 @@
 		 'action'=>'logout',
 	 ],
 	 'admin/worker'=>[
-		 'controller'=>'main',
+		 'controller'=>'admin',
 		 'action'=>'worker',
 	 ],
 	 'admin/organization'=>[
@@ -24,7 +24,8 @@
 		 'controller'=>'main',
 		 'action'=>'organization',
 	 ],
-	 'worker/'=>[
+	 
+	 'worker/information'=>[
 		 'controller'=>'worker',
 		 'action'=>'information',
 	 ],
