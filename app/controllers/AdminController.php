@@ -14,4 +14,8 @@
 	class AdminController extends BaseController
 	{
 		
+		public function organizationAdmin()
+		{
+		
+		}
 	}

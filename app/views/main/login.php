@@ -9,11 +9,10 @@
                 <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-
+        <button type="submit" class="btn btn-primary">Авторизоваться</button>
     </form>
     <br>
 	<?if(isset($items['error'])):?>
-        <b>Ошибка:</b><?=$items['error'];?>
+        <b>Ошибка: </b><?=$items['error'];?>
 	<?endif;?>
 

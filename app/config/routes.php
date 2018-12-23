@@ -20,8 +20,12 @@
 		 'controller'=>'admin',
 		 'action'=>'organization',
 	 ],
-	 'worker/my'=>[
-		 'controller'=>'admin',
+	 'main/organization'=>[
+		 'controller'=>'main',
 		 'action'=>'organization',
+	 ],
+	 'worker/'=>[
+		 'controller'=>'worker',
+		 'action'=>'information',
 	 ],
  ];

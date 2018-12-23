@@ -24,7 +24,8 @@
 		public function Login()
 		{
 			if ($this->findUser() != 'gust') {
-				$_SESSION['role'] = $this->findUser();
+				$_SESSION['role'] = $this->findUser()['role'];
+				$_SESSION['idUser'] = $this->findUser()['id'];
 				return true;
 			} else {
 				return false;
@@ -34,6 +35,7 @@
 		public static function logout()
 		{
 			if (!empty($_SESSION)) {
+				unset($_SESSION['idUser']);
 				unset($_SESSION['role']);
 			}
 		}
@@ -45,7 +47,7 @@
 			if (!$user) {
 				return 'gust';
 			} else {
-				return array_shift($user)['role'];
+				return ['role'=>array_shift($user)['role'],'id'=>array_shift($user)['id']];
 			}
 		}
 		

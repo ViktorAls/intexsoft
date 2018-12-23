@@ -40,6 +40,12 @@
 			}
 		}
 		
+		public function organizationAction()
+		{
+			$this->views->render('Просмотр информации о оргонизации');
+			
+		}
+		
 		public function logoutAction()
 		{
 			if (!empty($_SESSION['role']) && $_SESSION['role'] != 'gust') {
