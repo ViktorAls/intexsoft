@@ -1,8 +1,8 @@
 <style>
- 
+	/ * Теперь CSS * /
 	* {margin: 0; padding: 0;}
 	
-    .tree ul {
+	.tree ul {
 		padding-top: 20px; position: relative;
 		
 		transition: all 0.5s;
@@ -21,12 +21,12 @@
 		-moz-transition: all 0.5s;
 	}
 	
+	
 	.tree li::before, .tree li::after{
 		content: '';
 		position: absolute; top: 0; right: 50%;
 		border-top: 1px solid #ccc;
-		width: 100%;
-        height: 20px;
+		width: 50%; height: 20px;
 	}
 	.tree li::after{
 		right: auto; left: 50%;
@@ -66,9 +66,8 @@
 	
 	.tree li a{
 		border: 1px solid #ccc;
-		padding: 10px 10px;
+		padding: 5px 10px;
 		text-decoration: none;
-        margin-bottom:20px;
 		color: #666;
 		font-family: arial, verdana, tahoma;
 		font-size: 11px;
@@ -94,22 +93,67 @@
 	.tree li a:hover+ul ul::before{
 		border-color:  #94a0b4;
 	}
+
 </style>
-
 <div class="tree">
-	<ul>
-				<li>
-                        <a href="#">Данные пользователя<br><p>inn</p></a>
-					<ul>
-						<li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
-                        <li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
-                        <li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
-                        <li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
-                        <li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
-                        <li><a href="#">Иванов Дмитрий Петрович<br><img src="man.png" width="50" height="50" alt="lorem"/></a></li>
+    <div class="col-md-12 col-md-offset-5">
+        <ul>
+            <li>
+                <a href="#">
+                    <p><b>Иванов Иван Иванович</b></p>
+                    <p><b>snils: </b> 123021032</p>
+                    <p><b>inn: </b>23412343</p>
+                </a>
+                <ul>
+                    <li>
+                        <a href="#">
+                            <p><b>OOO "Красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <p><b>OOO " Не красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
 
-                        <li><a href="#">Иванова Ксения Петровна<br><img src="woman.png" width="50" height="50" alt="lorem"/></a></li>
-					</ul>
-				</li>
-	</ul>
+                    <li>
+                        <a href="#">
+                            <p><b>OOO " Не красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <p><b>OOO " Не красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <p><b>OOO " Не красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <p><b>OOO " Не красный"</b></p>
+                            <p><b>ogrn: </b>231024032134</p>
+                            <p><b>oktmo:</b> 34234213</p>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>

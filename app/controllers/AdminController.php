@@ -19,17 +19,23 @@
 			return [
 				'organization' => ['admin'],
 				'worker'=>['admin'],
+				'view'=>['admin'],
 			];
 		}
 		
 		public function organizationAction()
 		{
-		  $this->views->render('Попадёт только админ');
+		  $this->views->render('Организации');
+		}
+		
+		public function viewAction()
+		{
+			$this->views->render('Просмотреть всю организацию');
 		}
 		
 		public function workerAction()
 		{
-			$this->views->render('Попадёт только админ');
+			$this->views->render('Просмотреть рабочего');
 			
 		}
 	}

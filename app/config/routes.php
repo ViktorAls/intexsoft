@@ -12,6 +12,11 @@
 		 'controller'=>'main',
 		 'action'=>'logout',
 	 ],
+	 'main/organization'=>[
+		 'controller'=>'main',
+		 'action'=>'organization',
+	 ],
+	
 	 'admin/worker'=>[
 		 'controller'=>'admin',
 		 'action'=>'worker',
@@ -20,9 +25,9 @@
 		 'controller'=>'admin',
 		 'action'=>'organization',
 	 ],
-	 'main/organization'=>[
-		 'controller'=>'main',
-		 'action'=>'organization',
+	 'admin/organization/view'=>[
+		 'controller'=>'admin',
+		 'action'=>'view',
 	 ],
 	 
 	 'worker/information'=>[
