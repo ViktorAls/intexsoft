@@ -21,12 +21,11 @@
 		-moz-transition: all 0.5s;
 	}
 	
-	
 	.tree li::before, .tree li::after{
 		content: '';
 		position: absolute; top: 0; right: 50%;
 		border-top: 1px solid #ccc;
-		width: 50%;
+		width: 100%;
         height: 20px;
 	}
 	.tree li::after{
