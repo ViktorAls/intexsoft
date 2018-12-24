@@ -5,6 +5,7 @@
 	
 	use app\core\BaseController;
 	use app\lib\Error;
+	use app\lib\Validation;
 	use app\models\worker;
 	
 	class WorkerController extends BaseController

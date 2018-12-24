@@ -3,7 +3,6 @@
 	namespace app\controllers;
 	
 	use app\core\BaseController;
-	use app\lib\Db;
 	use app\lib\User;
 	use app\models\Organization;
 	
