@@ -19,5 +19,8 @@
 		{
 			$this->db = new Db();
 		}
-        
+		
+		public function all(){
+			return $this->db->findAll($this->tableName());
+		}
 	}

@@ -9,16 +9,14 @@
         </form>
     </div>
 </div>
-<div class="drop-shadow lifted">
-    <p>Название предприятия</p>
-    <div>fgdsf</div>
-    <div>sdfgsdf</div>
-</div>
-
-<div class="drop-shadow lifted">
-    <p>Lifted corners</p>
-</div>
-
-<div class="drop-shadow lifted">
-    <p>Lifted corners</p>
-</div>
+<?if (!isset($item['organization'])):?>
+    <?foreach ($items['organization'] as $item):?>
+        <div class="drop-shadow lifted">
+            <p><?=$item['displayName']?></p>
+            <div><b>ОГРН:</b> <?=$item['ogrn']?></div>
+            <div><b>ОКТМО:</b> <?=$item['oktmo']?></div>
+        </div>
+    <?endforeach;?>
+<?else:?>
+    <p>Извените, предприятий не найдено.</p>
+<?endif;?>

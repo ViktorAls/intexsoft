@@ -19,13 +19,13 @@
 		
 		public function indexAction()
 		{
+			$organization = new Organization();
 			if (!empty($_POST['search'])){
-				echo 'ujn';
+				$this->views->render('Главная страница',['organization'=>$organization->Like($_POST['search'])]);
 			}else {
-				$o = new Organization();
-				var_dump($o->all());
-				$this->views->render('Главная страница');
+				$this->views->render('Все организации',['organization'=>$organization->all()]);
 			}
+			
 		}
 		
 		public function loginAction()

@@ -27,5 +27,6 @@
 			require 'app/views/' . $this->path . '.php';
 			$content = ob_get_clean();
 			require 'app/views/layout/' . $this->layout . '.php';
+			exit();
 		}
 	}
