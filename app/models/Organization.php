@@ -17,7 +17,7 @@
 		const displayName = 'displayName';
 		const ogrn ='ogrn';
 		const oktmo ='oktmo';
-		const id = 'id';
+		const id = 'organization_id';
 		
 		public static function tableName()
 		{
@@ -30,7 +30,7 @@
 		}
 		
 		public  function allInformation (){
-			$query = "SELECT ".self::tableName().".* , count(".worker::tableName().".".worker::id.") as workers FROM ".self::tableName()." LEFT JOIN ".worker::tableName()." ON ".self::tableName().".".self::id." = ".worker::tableName().".".worker::organizations_id." GROUP BY ".self::tableName().".".self::id;
+			$query = "SELECT count( ".Worker::tableName().".".worker::id." ) as workers, ".self::tableName().".* FROM (".self::tableName()." JOIN WorkerOrganization USING (".self::id.")) JOIN ".worker::tableName()." USING (".worker::id.") GROUP BY ".self::tableName().".".self::id;
 			return	$this->db->execute($query);
 		}
 	}

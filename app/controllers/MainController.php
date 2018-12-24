@@ -24,7 +24,7 @@
 			if (!empty($_POST['search'])){
 				$this->views->render('Главная страница',['organization'=>$organization->Like($_POST['search'])]);
 			}else {
-				$this->views->render('Все организации',['organization'=>$organization->allInformation()]);
+				$this->views->render('Все организации',['organization'=>$organization->all()]);
 			}
 			
 		}
