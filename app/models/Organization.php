@@ -30,6 +30,7 @@
 		}
 		
 		public  function allInformation (){
+		
 			$query = "SELECT count( ".Worker::tableName().".".worker::id." ) as workers, ".self::tableName().".* FROM (".self::tableName()." JOIN WorkerOrganization USING (".self::id.")) JOIN ".worker::tableName()." USING (".worker::id.") GROUP BY ".self::tableName().".".self::id;
 			return	$this->db->execute($query);
 		}

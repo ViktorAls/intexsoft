@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8"></div>
     <div class="col-md-4">
-        <form class="form-inline" method="post" action="/">
+        <form class="form-inline" method="get" action="/">
             <div class="form-group mx-sm-3 mb-2">
                 <input type="text" class="form-control" name="search" id="search" placeholder="Search">
             </div>
@@ -9,7 +9,7 @@
         </form>
     </div>
 </div>
-<?if (empty($item['organization'])):?>
+<?if ($items['organization'] != null):?>
     <?foreach ($items['organization'] as $item):?>
         <div class="drop-shadow lifted">
             <p><?=$item['displayName']?></p>
@@ -18,5 +18,5 @@
         </div>
     <?endforeach;?>
 <?else:?>
-    <p>Извените, предприятий не найдено.</p>
+    <p>По вашему запросу "<?=$_GET['search']?>" результатов не найдено.</p>
 <?endif;?>

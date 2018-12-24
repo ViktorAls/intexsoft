@@ -21,8 +21,8 @@
 		public function indexAction()
 		{
 			$organization = new Organization();
-			if (!empty($_POST['search'])){
-				$this->views->render('Главная страница',['organization'=>$organization->Like($_POST['search'])]);
+			if (!empty($_GET['search'])){
+				$this->views->render('Главная страница',['organization'=>$organization->Like($_GET['search'])]);
 			}else {
 				$this->views->render('Все организации',['organization'=>$organization->all()]);
 			}

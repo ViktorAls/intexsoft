@@ -4,58 +4,22 @@
         <ul>
             <li>
                 <a href="#">
-                    <p><b>Иванов Иван Иванович</b></p>
-                    <p><b>snils: </b> 123021032</p>
-                    <p><b>inn: </b>23412343</p>
+                    <p><b><?=$items['user']['middlename']?> <?=$items['user']['firstname']?> <?=$items['user']['lastname']?></b></p>
+                    <p><b>Дата рожения: </b> <?=$items['user']['birthday']?></p>
+                    <p><b>СНИЛС: </b><?=$items['user']['snils']?></p>
+                    <p><b>ИНН: </b><?=$items['user']['inn']?></p>
                 </a>
                 <ul>
+                    <?foreach ($items['organization'] as $item):?>
                     <li>
                         <a href="#">
-                            <p><b>OOO "Красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
+                            <p><b><?=$item['displayName']?></b></p>
+                            <p><b>Ставка: </b><?=$item['rate']?></p>
+                            <p><b>ОГРН: </b><?=$item['ogrn']?></p>
+                            <p><b>ОКТМО:</b> <?=$item['oktmo']?></p>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <p><b>OOO " Не красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <p><b>OOO " Не красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <p><b>OOO " Не красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <p><b>OOO " Не красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <p><b>OOO " Не красный"</b></p>
-                            <p><b>ogrn: </b>231024032134</p>
-                            <p><b>oktmo:</b> 34234213</p>
-                        </a>
-                    </li>
-                    
+                    <?endforeach;?>
                 </ul>
             </li>
         </ul>

@@ -24,8 +24,9 @@
 		public function Login()
 		{
 			if ($this->findUser() != 'gust') {
-				$_SESSION['role'] = $this->findUser()['role'];
-				$_SESSION['idUser'] = $this->findUser()['id'];
+				$user = $this->findUser();
+				$_SESSION['role'] = $user['role'];
+				$_SESSION['idUser'] = $user['id'];
 				return true;
 			} else {
 				return false;
@@ -47,7 +48,8 @@
 			if (!$user) {
 				return 'gust';
 			} else {
-				return ['role'=>array_shift($user)['role'],'id'=>array_shift($user)['id']];
+				$idUser = key($user);
+				return ['role'=>array_shift($user)['role'],'id'=>$idUser];
 			}
 		}
 		

@@ -4,6 +4,8 @@
 	
 	
 	use app\core\BaseController;
+	use app\lib\Error;
+	use app\models\worker;
 	
 	class WorkerController extends BaseController
 	{
@@ -15,6 +17,13 @@
 		}
 		
 		public function informationAction(){
-			$this->views->render('Попадёт только работник');
+			$worker = new worker();
+			$user = $worker->one([worker::id_user=>$_SESSION['idUser']]);
+			if (!empty($user)){
+				$organization = $worker->workerOrganizations($_SESSION['idUser']);
+				$this->views->render('Личные данные работника',['user'=>$user,'organization'=>$organization]);
+			} else {
+				Error::run('404');
+			}
 		}
 	}

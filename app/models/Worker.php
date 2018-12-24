@@ -15,6 +15,7 @@
 	{
 		
 		const id = 'id_worker';
+		const id_user = 'id_user';
 		const organizations_id = 'organizations_id';
 		
 		public static function tableName()
@@ -24,10 +25,9 @@
 		
 		
 		public function workerOrganizations($id){
-			$query = " SELECT * FROM".self::tableName();
-			$worker = $this->db->execute($query);
-			$query = "SELECT ".self::tableName().".* FROM ".self::tableName()." LEFT JOIN ".worker::tableName()." ON ".self::tableName().".".self::id." = ".worker::tableName().".".worker::organizations_id." where ".self::tableName().".".self::id;
-			
+			$id = (int)$id;
+			$query = "SELECT ".Organization::tableName().".*,WorkerOrganization.rate FROM (".Organization::tableName()." JOIN WorkerOrganization USING (".Organization::id.")) JOIN ".self::tableName()." USING (".self::id.") where ".self::tableName().".".self::id_user." = ".$id;
+			return $this->db->execute($query);
 		}
 		
 	}

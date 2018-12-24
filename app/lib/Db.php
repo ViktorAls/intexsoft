@@ -46,4 +46,8 @@
 			$query = 'SELECT * FROM '.$table;
 			return $this->execute($query);
 		}
+		public function findOne($table,$sign,array $id){
+			$query = 'SELECT * FROM '.$table.' WHERE '.key($id).' '.$sign.' '.reset($id);
+			return $this->execute($query);
+		}
 	}

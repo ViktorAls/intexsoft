@@ -23,5 +23,8 @@
 		public function all(){
 			return $this->db->findAll($this->tableName());
 		}
+		public function one($id){
+			return array_shift($this->db->findOne($this->tableName(),'=',$id));
+		}
 		
 	}
