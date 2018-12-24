@@ -46,9 +46,4 @@
 			$query = 'SELECT * FROM '.$table;
 			return $this->execute($query);
 		}
-		public function innerJoin($externalTable,$innerTable,$externalField,$innerField){
-			$query = 'SELECT * FROM'. $externalTable .'INNER JOIN '.$innerTable.' ON '.$externalTable.'.'.$externalField.'= '.$innerTable.'.'.$innerField;
-			return $this->execute($query);
-		}
-		
 	}

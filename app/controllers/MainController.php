@@ -3,6 +3,7 @@
 	namespace app\controllers;
 	
 	use app\core\BaseController;
+	use app\lib\Db;
 	use app\lib\User;
 	use app\models\Organization;
 	
@@ -23,7 +24,7 @@
 			if (!empty($_POST['search'])){
 				$this->views->render('Главная страница',['organization'=>$organization->Like($_POST['search'])]);
 			}else {
-				$this->views->render('Все организации',['organization'=>$organization->all()]);
+				$this->views->render('Все организации',['organization'=>$organization->allInformation()]);
 			}
 			
 		}

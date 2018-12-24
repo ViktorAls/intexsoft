@@ -12,7 +12,7 @@
 	abstract class Model
 	{
 
-		abstract public function tableName();
+		abstract public static function tableName();
 		protected $db;
 		
 		public function __construct()
@@ -23,4 +23,5 @@
 		public function all(){
 			return $this->db->findAll($this->tableName());
 		}
+		
 	}

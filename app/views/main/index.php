@@ -15,6 +15,7 @@
             <p><?=$item['displayName']?></p>
             <div><b>ОГРН:</b> <?=$item['ogrn']?></div>
             <div><b>ОКТМО:</b> <?=$item['oktmo']?></div>
+            <div><b>Рабочих:</b> <?=$item['workers']?></div>
         </div>
     <?endforeach;?>
 <?else:?>

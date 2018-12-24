@@ -9,7 +9,18 @@
 	namespace app\models;
 	
 	
-	class worker
+	use app\core\Model;
+	
+	class worker extends Model
 	{
+		
+		const id = 'id';
+		const organizations_id = 'organizations_id';
+		
+		public static function tableName()
+		{
+			return 'workers';
+		}
+		
 		
 	}
