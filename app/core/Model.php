@@ -11,16 +11,13 @@
 	
 	abstract class Model
 	{
-		protected $tableName;
+
+		abstract public function tableName();
+		protected $db;
 		
 		public function __construct()
 		{
-			$a = ['name','surname'];
-			$db = new Db();
-			$db->execute('SHOW COLUMNS FROM '.$this->tableName);
-			foreach ($a as $item) {
-				$this->{$item};
-			}
+			$this->db = new Db();
 		}
         
 	}

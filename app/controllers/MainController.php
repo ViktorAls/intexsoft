@@ -4,6 +4,7 @@
 	
 	use app\core\BaseController;
 	use app\lib\User;
+	use app\models\Organization;
 	
 	class MainController extends BaseController
 	{
@@ -18,8 +19,13 @@
 		
 		public function indexAction()
 		{
-			
-			$this->views->render('Главная страница');
+			if (!empty($_POST['search'])){
+				echo 'ujn';
+			}else {
+				$o = new Organization();
+				var_dump($o->all());
+				$this->views->render('Главная страница');
+			}
 		}
 		
 		public function loginAction()
