@@ -35,7 +35,7 @@
 		public static function Unique($table, array $id)
 		{
 			$db = new Db();
-			$flag = $db->findOne($table['tableName'], '=', $id);
+			$flag = $db->findOne($table, '=', $id);
 			if (empty($flag)) {
 				return true;
 			} else {
@@ -45,7 +45,7 @@
 		
 		public static function Date($date)
 		{
-			if ($date > $date("Y-m-d")) {
+			if ($date > date("d.m.Y")) {
 				return false;
 			} else {
 				return true;

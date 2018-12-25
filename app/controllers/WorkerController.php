@@ -25,7 +25,7 @@
 			$user = array_shift($user);
 			if (!empty($user)) {
 				if (!empty($_POST['worker'])){
-					if ($worker->save($_POST['worker'],[worker::id=>$id])) {
+					if ($worker->update($_POST['worker'],[worker::id=>$id])) {
 						header("Refresh:0");
 					} else {
 						header("Refresh:0");
