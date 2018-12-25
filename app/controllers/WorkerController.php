@@ -22,9 +22,10 @@
 			$worker = new worker();
 			$user = $worker->one([worker::id_user => $_SESSION['idUser']]);
 			$id = key($user);
-			if (!empty(array_shift($user))) {
+			$user = array_shift($user);
+			if (!empty($user)) {
 				if (!empty($_POST['worker'])){
-					$worker->save($_POST['worker'],$id);
+					$worker->save($_POST['worker'],[worker::id=>$id]);
 				}
 				$organization = $worker->workerOrganizations($_SESSION['idUser']);
 				$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);

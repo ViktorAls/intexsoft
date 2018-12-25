@@ -60,21 +60,16 @@
 		 * @param array $value - ключ: куда вставлять, элемент - значение.
 		 * @return bool
 		 */
-		public function update($table, array $value,$id){
-			$id = (int)$id;
+		public function update($table, array $value,array $id){
 			$key = array_keys($value);
 			$keys = null;
 			foreach ($key as $item){
 				$keys .= $item.'=:'.$item.', ';
 			}
 			$keys = substr($keys,0,-2);
-			echo '<pre>';
-			echo print_r($value,true);
-			echo '</pre>';
-			$sql = "UPDATE ".$table." SET ".$keys." WHERE id='".$id."'";
-			echo $sql;
+			$sql = "UPDATE ".$table." SET ".$keys." WHERE ".key($id)."='".reset($id)."'";
 			$stmt= $this->pdo->prepare($sql);
-			if ($stmt->execute([$value])){
+			if ($stmt->execute($value)){
 				return true;
 			}else {
 				return false;
