@@ -9,20 +9,46 @@
 	namespace app\lib;
 	
 	
-	class Validation
+	abstract class Validation
 	{
-		public static function Range($value,$options){
-			$options = [
-				'options' => [
-					'min_range' => $options[0],
-					'max_range' => $options[1],
-				]
-			];
+		public static function Range($value, array $options)
+		{
 			
-			if (filter_var($value, FILTER_VALIDATE_FLOAT, $options) != FALSE) {
+			if ($value >= $options['min'] || $value <= $options['max']) {
 				return true;
 			} else {
 				return false;
+			}
+		}
+		
+		public static function Number($value)
+		{
+			
+			if (is_int($value)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		
+		public static function Unique($table, array $id)
+		{
+			$db = new Db();
+			$flag = $db->findOne($table['tableName'], '=', $id);
+			if (empty($flag)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		
+		public static function Date($date)
+		{
+			if ($date > $date("Y-m-d")) {
+				return false;
+			} else {
+				return true;
 			}
 		}
 	}

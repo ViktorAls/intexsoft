@@ -30,4 +30,12 @@
 			return $this->db->execute($query);
 		}
 		
+		public function save($array,$id){
+			if($this->db->update(self::tableName(),$array,$id)){
+				echo  'Хорошо';
+			} else {
+				echo 'Плохо';
+			}
+		}
+		
 	}

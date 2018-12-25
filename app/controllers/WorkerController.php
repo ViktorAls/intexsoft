@@ -17,12 +17,17 @@
 			];
 		}
 		
-		public function informationAction(){
+		public function informationAction()
+		{
 			$worker = new worker();
-			$user = $worker->one([worker::id_user=>$_SESSION['idUser']]);
-			if (!empty($user)){
+			$user = $worker->one([worker::id_user => $_SESSION['idUser']]);
+			$id = key($user);
+			if (!empty(array_shift($user))) {
+				if (!empty($_POST['worker'])){
+					$worker->save($_POST['worker'],$id);
+				}
 				$organization = $worker->workerOrganizations($_SESSION['idUser']);
-				$this->views->render('Личные данные работника',['user'=>$user,'organization'=>$organization]);
+				$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);
 			} else {
 				Error::run('404');
 			}

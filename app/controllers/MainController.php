@@ -13,17 +13,17 @@
 			return [
 				'index' => ['gust', 'admin', 'user'],
 				'login' => ['gust'],
-				'logout'=>['admin','user'],
+				'logout' => ['admin', 'user'],
 			];
 		}
 		
 		public function indexAction()
 		{
 			$organization = new Organization();
-			if (!empty($_GET['search'])){
-				$this->views->render('Главная страница',['organization'=>$organization->Like($_GET['search'])]);
-			}else {
-				$this->views->render('Все организации',['organization'=>$organization->all()]);
+			if (!empty($_GET['search'])) {
+				$this->views->render('Главная страница', ['organization' => $organization->Like($_GET['search'])]);
+			} else {
+				$this->views->render('Все организации', ['organization' => $organization->all()]);
 			}
 			
 		}

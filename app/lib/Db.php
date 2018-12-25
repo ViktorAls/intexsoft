@@ -31,9 +31,9 @@
 			return $result;
 		}
 		
-		public function execute($query, array $params=null)
+		public function execute($query, array $params = null)
 		{
-			if(is_null($params)){
+			if (is_null($params)) {
 				$stmt = $this->pdo->query($query);
 				return $stmt->fetchAll(PDO::FETCH_UNIQUE);
 			}
@@ -42,12 +42,43 @@
 			return $stmt->fetchAll(PDO::FETCH_UNIQUE);
 		}
 		
-		public function findAll($table){
-			$query = 'SELECT * FROM '.$table;
+		public function findAll($table)
+		{
+			$query = 'SELECT * FROM ' . $table;
 			return $this->execute($query);
 		}
-		public function findOne($table,$sign,array $id){
-			$query = 'SELECT * FROM '.$table.' WHERE '.key($id).' '.$sign.' '.reset($id);
+		
+		public function findOne($table, $sign, array $id)
+		{
+			$query = 'SELECT * FROM ' . $table . ' WHERE ' . key($id) . ' ' . $sign . ' ' . reset($id) . ' limit 1';
 			return $this->execute($query);
 		}
+		
+		
+		/**
+		 * @param $table - название табилци
+		 * @param array $value - ключ: куда вставлять, элемент - значение.
+		 * @return bool
+		 */
+		public function update($table, array $value,$id){
+			$id = (int)$id;
+			$key = array_keys($value);
+			$keys = null;
+			foreach ($key as $item){
+				$keys .= $item.'=:'.$item.', ';
+			}
+			$keys = substr($keys,0,-2);
+			echo '<pre>';
+			echo print_r($value,true);
+			echo '</pre>';
+			$sql = "UPDATE ".$table." SET ".$keys." WHERE id='".$id."'";
+			echo $sql;
+			$stmt= $this->pdo->prepare($sql);
+			if ($stmt->execute([$value])){
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
 	}

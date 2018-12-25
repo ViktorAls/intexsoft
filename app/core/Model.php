@@ -7,12 +7,14 @@
 	 */
 	
 	namespace app\core;
+	
 	use app\lib\Db;
 	
 	abstract class Model
 	{
-
+		
 		abstract public static function tableName();
+		
 		protected $db;
 		
 		public function __construct()
@@ -20,11 +22,15 @@
 			$this->db = new Db();
 		}
 		
-		public function all(){
+		public function all()
+		{
 			return $this->db->findAll($this->tableName());
 		}
-		public function one($id){
-			return array_shift($this->db->findOne($this->tableName(),'=',$id));
+		
+		public function one($id)
+		{
+			return $this->db->findOne($this->tableName(), '=', $id);
 		}
+		
 		
 	}
