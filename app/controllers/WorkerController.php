@@ -25,7 +25,11 @@
 			$user = array_shift($user);
 			if (!empty($user)) {
 				if (!empty($_POST['worker'])){
-					$worker->save($_POST['worker'],[worker::id=>$id]);
+					if ($worker->save($_POST['worker'],[worker::id=>$id])) {
+						header("Refresh:0");
+					} else {
+						header("Refresh:0");
+					}
 				}
 				$organization = $worker->workerOrganizations($_SESSION['idUser']);
 				$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);

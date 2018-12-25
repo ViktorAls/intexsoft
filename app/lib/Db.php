@@ -60,7 +60,7 @@
 		 * @param array $value - ключ: куда вставлять, элемент - значение.
 		 * @return bool
 		 */
-		public function update($table, array $value,array $id){
+		public function update($table, array $value, array $id){
 			$key = array_keys($value);
 			$keys = null;
 			foreach ($key as $item){
