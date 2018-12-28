@@ -10,7 +10,6 @@
 	
 	
 	use app\core\Model;
-	use app\lib\Validation;
 	
 	class worker extends Model
 	{
@@ -30,6 +29,20 @@
 		}
 		
 		
+		public function rule (){
+			
+			return [
+				[['firstname','middlename','lastname','inn','snils'],['required']],
+				[['snils','inn'],['number']],
+				[['birthday'],['date']]
+			];
+		}
+		
+		/**
+		 * @param $id
+		 * @return array
+		 * Выводит все организации для работника, попути хватая 1,75 ставки.
+		 */
 		public function workerOrganizations($id)
 		{
 			$id = (int)$id;
@@ -37,33 +50,18 @@
 			return $this->db->execute($query);
 		}
 		
+		
 		public function update(array $array, array $id)
 		{
-			
-			$this->Validation($array);
-			if ($this->db->update(self::tableName(), $array, $id)) {
-				return false;
-			} else {
-				return false;
+			if ($this->validation($array)){
+				if ($this->db->update(self::tableName(), $array, $id)) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 		
-		public function Validation($array)
-		{
-			if ($array[self::firstname] == '' || $array[self::middlename] == '' || $array[self::lastname] == '' || $array[self::inn] == '' || $array[self::snils] == '') {
-				$_SESSION['error']['null'] = ['Поля не должны быть пустыми.'];
-			} else if (Validation::Date($array[self::birthday])) {
-				$_SESSION['error']['date'] = ['Дата не может быть больше текущей.'];
-			} else if (!is_int($array[self::inn]) || !is_int($array[self::snils])) {
-				$_SESSION['error']['number'] = ['СНИЛС и ИНН должны быть целыми числами.'];
-			}
-			if (Validation::Unique(worker::tableName(), [worker::inn => $array[worker::inn]]) || Validation::Unique(worker::tableName(), [worker::snils => $array[worker::snils]])) {
-				$_SESSION['error']['unique'] = ['СНИЛС и ИНН должны быть уникальными.'];
-			}
-			echo '<pre>';
-			var_dump($_SESSION['error']);
-			echo '</pre>';
-		}
 		
 		
 	}

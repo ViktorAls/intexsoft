@@ -5,7 +5,6 @@
 	
 	use app\core\BaseController;
 	use app\lib\Error;
-	use app\lib\Validation;
 	use app\models\worker;
 	
 	class WorkerController extends BaseController
@@ -17,6 +16,7 @@
 			];
 		}
 		
+		
 		public function informationAction()
 		{
 			$worker = new worker();
@@ -24,12 +24,9 @@
 			$id = key($user);
 			$user = array_shift($user);
 			if (!empty($user)) {
-				if (!empty($_POST['worker'])){
-					if ($worker->update($_POST['worker'],[worker::id=>$id])) {
-						header("Refresh:0");
-					} else {
-						header("Refresh:0");
-					}
+				if (!empty($_POST['worker'])) {
+					$worker->update($_POST['worker'], [worker::id => $id]);
+					header("Refresh:0");
 				}
 				$organization = $worker->workerOrganizations($_SESSION['idUser']);
 				$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);

@@ -60,7 +60,6 @@
 		 * @param $table - название табилци
 		 * @param array $value - ключ: куда вставлять, элемент - значение.
 		 * @return bool
-		 *
 		 */
 		public function update($table, array $value, array $id){
 			$key = array_keys($value);

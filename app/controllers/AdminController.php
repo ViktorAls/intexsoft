@@ -10,6 +10,7 @@
 	
 	
 	use app\core\BaseController;
+	use app\models\Organization;
 	
 	class AdminController extends BaseController
 	{
@@ -25,7 +26,8 @@
 		
 		public function organizationAction()
 		{
-		  $this->views->render('Организации');
+			$organization = new Organization();
+		  $this->views->render('Организации',['organization'=>$organization->all()]);
 		}
 		
 		public function viewAction()
@@ -36,7 +38,6 @@
 		public function workerAction()
 		{
 			$this->views->render('Просмотреть рабочего');
-			
 		}
 	}
 	

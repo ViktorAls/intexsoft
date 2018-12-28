@@ -11,44 +11,39 @@
 	
 	abstract class Validation
 	{
-		public static function Range($value, array $options)
+		public static function range($value, array $options)
 		{
-			
-			if ($value >= $options['min'] || $value <= $options['max']) {
+			if ($value >= $options['min'] && $value <= $options['max']) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 		
-		public static function Number($value)
+		public static function required ($value){
+			if (!empty($value)){
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		public static function number($value)
 		{
-			
-			if (is_int($value)) {
+			if (ctype_digit($value)) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 		
-		
-		public static function Unique($table, array $id)
+		public static function date($date,$format='Y-m-d')
 		{
-			$db = new Db();
-			$flag = $db->findOne($table, '=', $id);
-			if (empty($flag)) {
+			if ($date < date($format)) {
 				return true;
 			} else {
 				return false;
 			}
 		}
-		
-		public static function Date($date)
-		{
-			if ($date > date("d.m.Y")) {
-				return false;
-			} else {
-				return true;
-			}
-		}
+
 	}

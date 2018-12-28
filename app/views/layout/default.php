@@ -24,7 +24,23 @@
     </nav>
 </div>
 <div class="container">
-
+ <?if (!empty($_SESSION['error'])):?>
+     <div class="alert alert-danger alert-dismissible fade show" role="alert">
+         <strong>Ошибка: </strong><?$_SESSION['error']?>
+         <? unset($_SESSION['error']); ?>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+     </div>
+    <?elseif (!empty($_SESSION['success'])):?>
+     <div class="alert alert-success alert-dismissible fade show" role="alert">
+         <strong>Успех:</strong> <?$_SESSION['success'];?>
+	     <? unset($_SESSION['success']); ?>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>
+     </div>
+    <?endif;?>
     <?=$content?>
     
 </div>
