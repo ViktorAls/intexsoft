@@ -5,6 +5,7 @@
 ?>
 
 <div class="row">
+    
     <div class="col-md-3">
         <table class="table table-reflow">
             <thead>
@@ -44,7 +45,7 @@
                     <td><?=$value[worker::birthday]?> </td>
                     <td><?=$value[worker::inn]?> </td>
                     <td><?=$value[worker::snils]?></td>
-                    <td><a href="/admin/worker/view?id=<?=$key?>">Просмотреть</a>/<a href="/admin/worker/delete?id=<?=$key?>">Уволить</a>/<a href="/admin/worker/create">Добавить</a></td>
+                    <td><a href="/admin/worker/view?id=<?=$key?>">Просмотреть</a>/<a href="/admin/worker/delete?id=<?=$key?>">Уволить</a></td>
                 </tr>
             <?endforeach;?>
             </tbody>
