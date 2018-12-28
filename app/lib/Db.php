@@ -85,6 +85,8 @@
 			if ($stmt->execute($value)){
 				return true;
 			}else {
+//				echo '<pre>';
+//				var_dump($stmt->errorInfo());
 				return false;
 			}
 		}

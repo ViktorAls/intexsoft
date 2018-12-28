@@ -13,6 +13,7 @@
 	{
 		public static function range($value, array $options)
 		{
+			echo  $value;
 			if ($value >= $options['min'] && $value <= $options['max']) {
 				return true;
 			} else {

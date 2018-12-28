@@ -26,7 +26,7 @@
 		
 		
 		public function rule (){
-			
+
 			return [
 				[['rate'],['range',['min'=>1,'max'=>1.75]]],
 			];
