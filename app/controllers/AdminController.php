@@ -76,8 +76,8 @@
 				$user = $worker->one([worker::id => $_GET['id']]);
 				$user = array_shift($user);
 				if (!empty($user)) {
-					$organization = $worker->workerOrganizations([worker::id => $_GET['id']]);
-					$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);
+					$organizations = $worker->workerOrganizations([worker::id => $_GET['id']]);
+					$this->views->render('Личные данные работника', ['user' => $user, 'organizations' => $organizations]);
 				} else {
 					Error::run('404');
 				}

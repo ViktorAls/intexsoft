@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d6053ef-817d-4c68-8e9e-547fe0952249" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/WorkerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/WorkerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/lib/Db.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/lib/Db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Organization.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Organization.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Worker.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Worker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/organization.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/organization.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/worker.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/workerView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/workerView.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/workerView.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/admin/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="46" column="169" selection-start-line="46" selection-start-column="169" selection-end-line="46" selection-end-column="169" />
+            <state>
+              <caret selection-end-line="52" selection-end-column="6" />
               <folding>
                 <element signature="e#4#32#0#PHP" expanded="true" />
               </folding>
@@ -85,13 +77,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/AdminController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="43" />
+            <state relative-caret-position="298">
+              <caret line="79" column="119" selection-start-line="79" selection-start-column="119" selection-end-line="79" selection-end-column="119" />
               <folding>
                 <element signature="e#133#161#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/admin/workerView.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+              <folding>
+                <element signature="e#4#32#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,10 +154,11 @@
         <option value="$PROJECT_DIR$/app/models/Organization.php" />
         <option value="$PROJECT_DIR$/app/core/Model.php" />
         <option value="$PROJECT_DIR$/app/config/routes.php" />
-        <option value="$PROJECT_DIR$/app/views/admin/view.php" />
         <option value="$PROJECT_DIR$/app/controllers/WorkerController.php" />
         <option value="$PROJECT_DIR$/app/models/Worker.php" />
+        <option value="$PROJECT_DIR$/app/views/admin/view.php" />
         <option value="$PROJECT_DIR$/app/controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/app/views/admin/workerView.php" />
       </list>
     </option>
   </component>
@@ -272,7 +277,7 @@
       <workItem from="1545767798628" duration="6113000" />
       <workItem from="1545829036009" duration="16507000" />
       <workItem from="1545895783370" duration="11476000" />
-      <workItem from="1545975722893" duration="14409000" />
+      <workItem from="1545975722893" duration="15473000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1545174938945</created>
@@ -299,10 +304,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170332000" />
+    <option name="totallyTimeSpent" value="171396000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -454,9 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/workerView.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/core/Mapper.php" />
     <entry file="file://$PROJECT_DIR$/app/views/worker/information.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -562,16 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/admin/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="46" column="169" selection-start-line="46" selection-start-column="169" selection-end-line="46" selection-end-column="169" />
-          <folding>
-            <element signature="e#4#32#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -603,12 +595,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="52" selection-end-column="6" />
+          <folding>
+            <element signature="e#4#32#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="76" column="16" lean-forward="true" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="43" />
+        <state relative-caret-position="298">
+          <caret line="79" column="119" selection-start-line="79" selection-start-column="119" selection-end-line="79" selection-end-column="119" />
           <folding>
             <element signature="e#133#161#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/admin/workerView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <element signature="e#4#32#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
