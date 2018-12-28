@@ -1,3 +1,9 @@
+<?
+	use app\models\Organization;
+	use \app\models\worker;
+    $key = array_keys($items['infOrganization'])[0];
+?>
+
 <div class="row">
 <div class="col-md-3">
 	<table class="table table-reflow">
@@ -8,13 +14,13 @@
 		</thead>
 		<tbody>
 		<tr>
-			<th scope="row">ООО 'Красный'</th>
+			<th scope="row"><?=$items['infOrganization'][$key][Organization::displayName]?></th>
 		</tr>
 		<tr>
-			<th scope="row">ogrn: 1234567890</th>
+			<th scope="row">ОГРН: <?=$items['infOrganization'][$key][Organization::ogrn]?></th>
 		</tr>
 		<tr>
-			<th scope="row">oktmo: 123456789</th>
+			<th scope="row">ОКТМО: <?=$items['infOrganization'][$key][Organization::oktmo]?></th>
 		</tr>
 		</tbody>
 	</table>
@@ -31,20 +37,16 @@
 		</tr>
 		</thead>
 		<tbody>
+        <? foreach ($items['workers'] as $key => $value): ?>
 		<tr>
-			<th scope="row">1</th>
-			<td><a href="/worker/">Иванов Иван Иванович</a></td>
-			<td>10-06-1998</td>
-			<td>10230123</td>
-			<td>1023013242</td>
+			<th scope="row"><?=$key?></th>
+			<td><?=$value[worker::middlename]?> <?=$value[worker::firstname]?> <?=$value[worker::lastname]?></td>
+			<td><?=$value[worker::birthday]?> </td>
+			<td><?=$value[worker::inn]?> </td>
+			<td><?=$value[worker::snils]?></td>
+            <td><a href="/admin/worker/view?id=<?=$key?>">Просмотреть</a>/<a href="/admin/worker/delete?id=<?=$key?>">Уволить</a>/<a href="/admin/worker/create">Добавить</a></td>
 		</tr>
-		<tr>
-			<th scope="row">2</th>
-			<td><a href="">Иванов Иван Иванович</a></td>
-			<td>10-06-1998</td>
-			<td>10230123</td>
-			<td>1023013242</td>
-		</tr>
+	<?endforeach;?>
 		</tbody>
 	</table></div>
 </div>

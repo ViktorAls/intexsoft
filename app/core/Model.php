@@ -28,8 +28,12 @@
 			return $this->db->findAll($this->tableName());
 		}
 		
-		public function one($id)
+		public function one(array $id)
 		{
+			return $this->db->findOne($this->tableName(), '=', $id);
+		}
+		
+		public function delete($id){
 			return $this->db->findOne($this->tableName(), '=', $id);
 		}
 		

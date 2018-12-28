@@ -43,10 +43,9 @@
 		 * @return array
 		 * Выводит все организации для работника, попути хватая 1,75 ставки.
 		 */
-		public function workerOrganizations($id)
+		public function workerOrganizations(array $id)
 		{
-			$id = (int)$id;
-			$query = "SELECT " . Organization::tableName() . ".*,WorkerOrganization.rate FROM (" . Organization::tableName() . " JOIN WorkerOrganization USING (" . Organization::id . ")) JOIN " . self::tableName() . " USING (" . self::id . ") where " . self::tableName() . "." . self::id_user . " = " . $id;
+			$query = "SELECT " . Organization::tableName() . ".*,WorkerOrganization.rate FROM (" . Organization::tableName() . " JOIN WorkerOrganization USING (" . Organization::id . ")) JOIN " . self::tableName() . " USING (" . self::id . ") where " . self::tableName() . "." . key($id).' = '.reset($id);
 			return $this->db->execute($query);
 		}
 		

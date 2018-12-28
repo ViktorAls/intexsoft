@@ -32,4 +32,15 @@
 			$query = "SELECT count( ".Worker::tableName().".".worker::id." ) as workers, ".self::tableName().".* FROM (".self::tableName()." JOIN WorkerOrganization USING (".self::id.")) JOIN ".worker::tableName()." USING (".worker::id.") GROUP BY ".self::tableName().".".self::id;
 			return	$this->db->execute($query);
 		}
+		
+		public function workersOrganization($id){
+			$query = 'SELECT '.worker::tableName().'.*, WorkerOrganization.rate FROM ('.Organization::tableName().' JOIN WorkerOrganization USING ('.Organization::id.')) JOIN '.worker::tableName().' USING ('.worker::id.') where '.Organization::tableName().'.'.Organization::id.'= ?';
+			return $this->db->execute($query,[$id]);
+		}
+		
+		public function deleteRelatedData(){
+		
+		
+		
+		}
 	}

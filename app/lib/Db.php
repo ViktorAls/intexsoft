@@ -77,4 +77,13 @@
 			}
 		}
 		
+		public function deleteALL ($tableName){
+			$count = $this->pdo->exec("DELETE FROM ".$tableName);
+			return $count;
+		}
+		
+		public function delete ($tableName,$sign, array $id){
+			$count = $this->pdo->exec("DELETE FROM ".$tableName.' where '.key($id).' '.$sign.' '.reset($id));
+			return $count;
+		}
 	}

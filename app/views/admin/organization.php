@@ -9,26 +9,14 @@
 	</tr>
 	</thead>
 	<tbody>
+    <?foreach ($items['organization'] as $key => $value):?>
 	<tr>
-		<th scope="row">1</th>
-		<td>Новый завод</td>
-		<td>123123123</td>
-		<td>324123234234</td>
-		<td>Удалить/<a href="/admin/organization/view?id=1">Посмотреть</a></td>
+		<th scope="row"><?=$key?></th>
+		<td><?=$value['displayName']?></td>
+		<td><?=$value['ogrn']?></td>
+		<td><?=$value['oktmo']?></td>
+		<td><a href="/admin/organization/delete?id=<?=$key?>">Удалить</a>/<a href="/admin/organization/view?id=<?=$key?>">Посмотреть</a></td>
 	</tr>
-	<tr>
-		<th scope="row">1</th>
-		<td>Новый завод</td>
-		<td>123123123</td>
-		<td>324123234234</td>
-		<td>Удалить/<a href="/admin/organization/view?id=2">Посмотреть</a></td>
-	</tr>
-	<tr>
-		<th scope="row">1</th>
-		<td>Новый завод</td>
-		<td>123123123</td>
-		<td>324123234234</td>
-		<td>Удалить/<a href="/admin/organization/view?id=3">Посмотреть</a></td>
-	</tr>
+    <?endforeach;?>
 	</tbody>
 </table>

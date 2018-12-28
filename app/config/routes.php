@@ -17,9 +17,9 @@
 		 'action'=>'organization',
 	 ],
 	
-	 'admin/worker'=>[
+	 'admin/worker/view'=>[
 		 'controller'=>'admin',
-		 'action'=>'worker',
+		 'action'=>'workerView',
 	 ],
 	 'admin/organization'=>[
 		 'controller'=>'admin',
@@ -29,9 +29,12 @@
 		 'controller'=>'admin',
 		 'action'=>'view',
 	 ],
-	 
 	 'worker/information'=>[
 		 'controller'=>'worker',
 		 'action'=>'information',
+	 ],
+	 'admin/organization/delete'=>[
+		 'controller'=>'admin',
+		 'action'=>'delete',
 	 ],
  ];
