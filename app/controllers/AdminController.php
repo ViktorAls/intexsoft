@@ -11,6 +11,7 @@
 	
 	use app\core\BaseController;
 	use app\lib\Error;
+	use app\lib\XmlOrganization;
 	use app\models\Organization;
 	use app\models\worker;
 	
@@ -86,6 +87,14 @@
 			}
 		}
 		
+		public  function  XmlAction (){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+				$xml = new XmlOrganization;
+				$xml->file($_FILES['file']);
+			} else {
+				Error::run('404');
+			}
+		}
 		
 		public  function  WorkerDeleteAction (){
 		

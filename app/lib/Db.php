@@ -77,6 +77,18 @@
 			}
 		}
 		
+		public function save($table, array $value){
+			$key = array_keys($value);
+			$fields = implode(',',$key);
+			$fieldsParams = ":".implode(', :',$key);
+			$stmt = $this->pdo->prepare("INSERT INTO ".$table."(".$fields.") VALUES(".$fieldsParams.")");
+			if ($stmt->execute($value)){
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
 		public function deleteALL ($tableName){
 			$count = $this->pdo->exec("DELETE FROM ".$tableName);
 			return $count;
@@ -85,5 +97,11 @@
 		public function delete ($tableName,$sign, array $id){
 			$count = $this->pdo->exec("DELETE FROM ".$tableName.' where '.key($id).' '.$sign.' '.reset($id));
 			return $count;
+		}
+		
+		public function whereAnd($table,array $array){
+			$key = array_keys($array);
+			$query = 'SELECT * FROM ' . $table.' WHERE '.$key[0].' = '.$array[$key[0]].' AND '.$key[1].' = '.$array[$key[1]];
+			return $this->execute($query);
 		}
 	}

@@ -45,22 +45,8 @@
 		 */
 		public function workerOrganizations(array $id)
 		{
-			$query = "SELECT " . Organization::tableName() . ".*,WorkerOrganization.rate FROM (" . Organization::tableName() . " JOIN WorkerOrganization USING (" . Organization::id . ")) JOIN " . self::tableName() . " USING (" . self::id . ") where " . self::tableName() . "." . key($id).' = '.reset($id);
+			$query = "SELECT " . Organization::tableName() . ".*,".WorkerOrganization::tableName().".".WorkerOrganization::rate." FROM (" . Organization::tableName() . " JOIN ".WorkerOrganization::tableName()." USING (" . Organization::id . ")) JOIN " . self::tableName() . " USING (" . self::id . ") where " . self::tableName() . "." . key($id).' = '.reset($id);
 			return $this->db->execute($query);
 		}
-		
-		
-		public function update(array $array, array $id)
-		{
-			if ($this->validation($array)){
-				if ($this->db->update(self::tableName(), $array, $id)) {
-					return true;
-				} else {
-					return false;
-				}
-			}
-		}
-		
-		
 		
 	}

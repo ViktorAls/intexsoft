@@ -38,9 +38,4 @@
 			return $this->db->execute($query,[$id]);
 		}
 		
-		public function deleteRelatedData(){
-		
-		
-		
-		}
 	}

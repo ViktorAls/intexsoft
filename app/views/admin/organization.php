@@ -5,10 +5,11 @@
                 <h4 class="modal-title" id="myModalLabel">XML обработка</h4>
             </div>
             <div class="modal-body">
-                <form action="">
-                    <input type="file" class="btn btn-primary btn-sm">
+                <form action="/admin/xml" ENCTYPE="multipart/form-data" method="post">
+                    <input type="file" name = "file" class="btn btn-primary btn-sm">
                     <input type="submit" class="btn btn-primary btn-sm">
                 </form>
+           
             </div>
         </div>
     </div>
