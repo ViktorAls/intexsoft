@@ -34,7 +34,6 @@
 			return [
 				[['firstname','middlename','lastname','inn','snils'],['required']],
 				[['snils','inn'],['number']],
-				[['birthday'],['date']]
 			];
 		}
 		

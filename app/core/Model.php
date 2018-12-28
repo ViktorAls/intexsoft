@@ -37,17 +37,6 @@
 			return $this->db->findOne($this->tableName(), '=', $id);
 		}
 		
-		public	function add_magic_quotes( $array ) {
-			foreach ( (array) $array as $k => $v ) {
-				if ( is_array( $v ) ) {
-					$array[$k] = $this->add_magic_quotes( $v );
-				} else {
-					$array[$k] = addslashes( $v );
-				}
-			}
-			return $array;
-		}
-		
 		/**
 		 * @param array $array - ключ = поле, значение = на что менем
 		 * @param array $id - запись которую меняем
@@ -56,7 +45,6 @@
 		 */
 		public function update(array $array, array $id)
 		{
-			$array = $this->add_magic_quotes($array);
 			if ($this->validation($array)){
 				if ($this->db->update(self::tableName(), $array, $id)) {
 					$answer = true;
@@ -70,7 +58,6 @@
 		}
 		
 		public function save(array $value){
-			$value= $this->add_magic_quotes($value);
 			if ($this->validation($value)) {
 				if ($this->db->save($this->tableName(), $value)) {
 					$answer = true;
@@ -80,8 +67,6 @@
 			} else {
 				$answer = false;
 			}
-			echo '<pre>';
-			var_dump($value);
 			return $answer;
 			
 		}
@@ -94,7 +79,7 @@
 		{
 			if (method_exists($this, 'rule')) {
 				$answer = true;
-				$rules = $this->add_magic_quotes($this->validFieldValues($array));
+				$rules =$this->validFieldValues($array);
 				
 				if (!empty($rules)) {
 					foreach ($rules as $key => $value){

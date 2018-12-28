@@ -26,7 +26,7 @@
 					if (!isset($xml->org[0])) {
 						$result = ['type' => 'error', 'message' => 'Не найдены данные для заполнения. Выбирите другой файл'];
 					} else {
-						$this->obrabotka($xml);
+						$this->treatment($xml);
 					}
 					$_SESSION['success'] = 'Рабочии успешно добавленны';
 					header("Location: " . $_SERVER['HTTP_REFERER']);
@@ -40,45 +40,48 @@
 			}
 		}
 		
-		public function obrabotka($xml)
+		public function treatment($xml)
 		{
 			$db = new Db();
 			$organ = new Organization();
 			foreach ($xml->org as $organization) {
-				$jsonOrgan = json_encode($organization->attributes());
-				$saveOrganization = reset(json_decode($jsonOrgan, true));
+				$saveOrganization = $this->convertToArray($organization->attributes());
 				$organ->save($saveOrganization);
 				$idOrganization = key($db->findOne(Organization::tableName(), '=', [Organization::ogrn => $saveOrganization[Organization::ogrn]]));
 				foreach ($organization as $key => $user) {
-					$jsonWorker = json_encode($user->attributes());
-					$user = reset(json_decode($jsonWorker, true));
+					$user = $this->convertToArray($user->attributes());
 					$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
 					if (!empty($workerBD)) {
 						$idWorker = key($workerBD);
+						var_dump($idWorker);
 						$worker = $db->whereAnd(WorkerOrganization::tableName(), [
 							WorkerOrganization::organization_id => $idOrganization,
 							WorkerOrganization::id_worker => $idWorker
 						]);
 						if (empty($worker)) {
-							$WorkerOrganization = new WorkerOrganization();
-							$WorkerOrganization->save([WorkerOrganization::id_worker => $idWorker,
-								WorkerOrganization::organization_id => $idOrganization,
-								WorkerOrganization::rate => $user['rate']
-							]);
+							$this->saveConn($idWorker,$idOrganization,$user['rate']);
 						}
 					} else {
 						$worker = new worker();
 						$worker->save($user);
 						$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
 						$idWorker = $workerBD[worker::id];
-						$WorkerOrganization = new WorkerOrganization();
-						$WorkerOrganization->save([WorkerOrganization::id_worker => $idWorker,
-							WorkerOrganization::organization_id => $idOrganization,
-							WorkerOrganization::rate => $user['rate']
-						]);
+						$this->saveConn($idWorker,$idOrganization,$user['rate']);
 					}
 				}
 			}
 		}
 		
+		public function convertToArray($xml){
+			$json = json_encode($xml->attributes());
+			return reset(json_decode($json, true));
+		}
+		
+		public function saveConn($idWorker,$idOrganization,$rate){
+			$WorkerOrganization = new WorkerOrganization();
+			$WorkerOrganization->save([WorkerOrganization::id_worker => $idWorker,
+				WorkerOrganization::organization_id => $idOrganization,
+				WorkerOrganization::rate => $rate
+			]);
+		}
 	}
