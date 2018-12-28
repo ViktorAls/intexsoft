@@ -27,33 +27,37 @@
 						$result = ['type' => 'error', 'message' => 'Не найдены данные для заполнения. Выбирите другой файл'];
 					} else {
 						$this->treatment($xml);
+						$result = ['type' => 'success', 'message' => 'Все прошло успешно.'];
 					}
-					$_SESSION['success'] = 'Рабочии успешно добавленны';
-					header("Location: " . $_SERVER['HTTP_REFERER']);
 				} else {
-					$_SESSION['error'] = 'Произошла ошибка загрузки файла';
-					header("Location: " . $_SERVER['HTTP_REFERER']);
+					$result = ['type' => 'error', 'message' => 'Ошибка загрузки файла'];
 				}
 			} else {
-				$_SESSION['error'] = 'Произошла ошибка загрузки файлов';
-				header("Location: " . $_SERVER['HTTP_REFERER']);
+				$result = ['type' => 'error', 'message' => 'Не верный формат файла.'];
 			}
+			$_SESSION[$result['type']]= $result['message'];
+			header("Location: " . $_SERVER['HTTP_REFERER']);
 		}
 		
+		/**
+		 * @param $xml
+		 * Принимает xml файл  обходим каждую ветку, если есть организация она не сохраниться.
+		 * Проверяем рабочих, если есть рабочий, то найти его id проверить не работает ли он в организации если нет, то добавить
+		 * Есть рабочего нету,добавить, найти id и отправить на работу )
+		 */
 		public function treatment($xml)
 		{
 			$db = new Db();
 			$organ = new Organization();
 			foreach ($xml->org as $organization) {
-				$saveOrganization = $this->convertToArray($organization->attributes());
+				$saveOrganization = $this->convertToArray($organization);
 				$organ->save($saveOrganization);
 				$idOrganization = key($db->findOne(Organization::tableName(), '=', [Organization::ogrn => $saveOrganization[Organization::ogrn]]));
 				foreach ($organization as $key => $user) {
-					$user = $this->convertToArray($user->attributes());
+					$user = $this->convertToArray($user);
 					$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
 					if (!empty($workerBD)) {
 						$idWorker = key($workerBD);
-						var_dump($idWorker);
 						$worker = $db->whereAnd(WorkerOrganization::tableName(), [
 							WorkerOrganization::organization_id => $idOrganization,
 							WorkerOrganization::id_worker => $idWorker
@@ -63,6 +67,7 @@
 						}
 					} else {
 						$worker = new worker();
+						unset($user['rate']);
 						$worker->save($user);
 						$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
 						$idWorker = $workerBD[worker::id];

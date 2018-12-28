@@ -62,6 +62,7 @@
 				if ($this->db->save($this->tableName(), $value)) {
 					$answer = true;
 				} else {
+					
 					$answer = false;
 				}
 			} else {
