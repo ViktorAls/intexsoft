@@ -1,6 +1,8 @@
 <?php
 	namespace app\core;
 	
+	use app\lib\Error;
+	
 	class Router
 	{
 		
@@ -24,6 +26,10 @@
 		public function match()
 		{
 			$url = trim($_SERVER['REQUEST_URI'], '/');
+			If(strpbrk($url, ' ?')){
+	 	    $url = stristr($url, '?',true);
+			}
+			
 			foreach ($this->routes as $route => $params) {
 				if (preg_match($route, $url, $matches)) {
 					$this->params = $params;
@@ -43,13 +49,13 @@
 						$controller = new $path($this->params);
 						$controller->$action();
 					} else {
-						header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+						Error::run(404);
 					}
 				} else {
-					header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+					Error::run(404);
 				}
 			} else {
-				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found", true, 404);
+				Error::run(404);
 			}
 		}
 	}
