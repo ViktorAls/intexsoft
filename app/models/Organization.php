@@ -43,4 +43,9 @@
 			return $this->db->execute($query,[$id]);
 		}
 		
+		public function delete(array $id)
+		{
+			$this->db->delete(WorkerOrganization::tableName(),'=',[WorkerOrganization::organization_id => reset($id)]);
+			return parent::delete($id);
+		}
 	}

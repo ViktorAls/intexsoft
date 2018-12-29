@@ -28,20 +28,27 @@
 			return $this->db->findAll($this->tableName());
 		}
 		
+		/**
+		 * @param array $id -['поле'=>'значение'];
+		 * @return array
+		 */
 		public function one(array $id)
 		{
 			return $this->db->findOne($this->tableName(), '=', $id);
 		}
 		
-		public function delete($id){
-			return $this->db->findOne($this->tableName(), '=', $id);
+		/**
+		 * @param array $id - ['поле'=>'значение'];
+		 * @return bool
+		 */
+		public function delete( array $id){
+			return $this->db->delete($this->tableName(), '=', $id);
 		}
 		
 		/**
-		 * @param array $array - ключ = поле, значение = на что менем
-		 * @param array $id - запись которую меняем
+		 * @param array $array   ключ = поле в  базе, значение = то что мы в него сохраняем
+		 * @param array $id - ['поле'=>'значение'];
 		 * @return bool
-		 * Неоходим для обновления данных в базу
 		 */
 		public function update(array $array, array $id)
 		{
@@ -57,6 +64,10 @@
 			return $answer;
 		}
 		
+		/**
+		 * @param array $value   ключ = поле в  базе, значение = то что мы в него сохраняем
+		 * @return bool
+		 */
 		public function save(array $value){
 			if ($this->validation($value)) {
 				if ($this->db->save($this->tableName(), $value)) {
@@ -114,8 +125,8 @@
 		/**
 		 * @param $array - массив значений для валидацииц
 		 * @return array - исправленный массив
-		 *  Беру массив правел для валидации и
-		 *  заменяю ключ в массиве правел на значения из
+		 *  Беру массив правел и
+		 *  заменяю ключи  на значения из
 		 *  массива который пришел для сохранения.
 		 */
 		public function validFieldValues($array)

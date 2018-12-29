@@ -11,6 +11,7 @@
 	
 	use app\lib\Error;
 	use app\models\Organization;
+	use app\models\WorkerOrganization;
 	
 	class OrganizationsController extends AdminController
 	{
@@ -87,6 +88,7 @@
 		
 		public function deleteAction()
 		{
-		
+			$organization = new Organization();
+			$organization->delete([Organization::id=>$_GET['id']]);
 		}
 	}
