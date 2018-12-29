@@ -1,22 +1,21 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: vipvi_mc4
-	 * Date: 19.12.2018
-	 * Time: 13:19
-	 */
+	namespace app\models;
 	
-	namespace app\lib;
+	use app\core\Model;
 	
-	class User
+	class User extends Model
 	{
-		public $db;
 		protected $name;
 		protected $password;
 		
+		public static function tableName()
+		{
+
+		}
+		
 		public function __construct($name, $password)
 		{
-			$this->db = new Db();
+			parent::__construct();
 			$this->setName($name);
 			$this->setPassword($password);
 		}
