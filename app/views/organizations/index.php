@@ -45,7 +45,17 @@
             <td><?=$value['displayName']?></td>
             <td><?=$value['ogrn']?></td>
             <td><?=$value['oktmo']?></td>
-            <td><a href="/admin/organization/delete?id=<?=$key?>">Удалить</a>/<a href="/admin/organization/view?id=<?=$key?>">Посмотреть</a>/<a href="/admin/organization/update?id=<?=$key?>">Изменить</a></td>
+            <td>
+                <div class="row">
+                <form method="post" action="/admin/organization/delete?id=<?=$key?>">
+                    <input type="submit" value="Удалить" class="btn btn-primary btn-sm">
+                 </form><pre> </pre>
+                 
+                <a href="/admin/organization/view?id=<?=$key?>" class="btn btn-primary btn-sm">Посмотреть</a> <pre> </pre>
+                
+                <a href="/admin/organization/update?id=<?=$key?>" class="btn btn-primary btn-sm">Изменить</a><pre> </pre>
+                </div>
+            </td>
         </tr>
     <?endforeach;?>
     </tbody>

@@ -29,12 +29,12 @@
 		{
 			$organizations = new Organization();
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-				if($organizations->update($_POST['organization'], [Organization::id => $_GET['id']])){
+				if ($organizations->update($_POST['organization'], [Organization::id => $_GET['id']])) {
 					$result = ['type' => 'success', 'message' => 'Организация успешно обновлена'];
 				} else {
 					$result = ['type' => 'error', 'message' => 'При обнавлении произошла ошибка'];
 				}
-				$_SESSION[$result['type']]= $result['message'];
+				$_SESSION[$result['type']] = $result['message'];
 				header('Location: ' . $_SERVER['REQUEST_URI']);
 			} else {
 				if (!empty($_GET['id'])) {
@@ -52,15 +52,16 @@
 			}
 		}
 		
-		public function createAction(){
+		public function createAction()
+		{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$organization = new Organization();
-				if($organization->save($_POST['organization'])){
+				if ($organization->save($_POST['organization'])) {
 					$result = ['type' => 'success', 'message' => 'Организация успешно добавлена'];
 				} else {
 					$result = ['type' => 'error', 'message' => 'При сохранении произошла ошибка'];
 				}
-				$_SESSION[$result['type']]= $result['message'];
+				$_SESSION[$result['type']] = $result['message'];
 				header('Location: ' . $_SERVER['REQUEST_URI']);
 			} else {
 				$this->views->render('Добавить новую организацию');
@@ -88,7 +89,25 @@
 		
 		public function deleteAction()
 		{
-			$organization = new Organization();
-			$organization->delete([Organization::id=>$_GET['id']]);
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				if (!empty($_GET['id'])) {
+					$organization = new Organization();
+					if (!empty($organization->one([Organization::id => $_GET['id']]))) {
+						if (!empty($organization->delete([Organization::id => $_GET['id']]))) {
+							$result = ['type' => 'success', 'message' => 'Организация успешно удалена'];
+						} else {
+							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
+						}
+					} else {
+						Error::run('404');
+					}
+				} else {
+					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+				}
+				$_SESSION[$result['type']] = $result['message'];
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			} else {
+				Error::run('404');
+			}
 		}
 	}
