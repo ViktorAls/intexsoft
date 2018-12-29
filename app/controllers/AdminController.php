@@ -33,7 +33,9 @@
 			];
 		}
 		
-		
+		/**
+		 * Загрузка xml для обработки
+		 */
 		public  function  XmlAction (){
 			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 				$xml = new XmlOrganization;

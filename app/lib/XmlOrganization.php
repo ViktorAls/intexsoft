@@ -15,6 +15,7 @@
 	
 	class XmlOrganization
 	{
+		// основная функция для проверки загруженного файла и сохранении его
 		public function file($xml)
 		{
 			$uploadDir = 'uploads';
