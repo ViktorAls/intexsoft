@@ -30,7 +30,12 @@
         <th>Название организации</th>
         <th>ОГРН</th>
         <th>ОКТМО</th>
-        <th>Действие</th>
+        <th><div class="row">
+                <div class="col-md-1">
+                    <a href="/admin/organization/create" class="btn btn-primary btn-sm" >Добавить новую организацию</a>
+                </div>
+            </div>
+        </th>
     </tr>
     </thead>
     <tbody>
@@ -40,7 +45,7 @@
             <td><?=$value['displayName']?></td>
             <td><?=$value['ogrn']?></td>
             <td><?=$value['oktmo']?></td>
-            <td><a href="/admin/organization/delete?id=<?=$key?>">Удалить</a>/<a href="/admin/organization/view?id=<?=$key?>">Посмотреть</a></td>
+            <td><a href="/admin/organization/delete?id=<?=$key?>">Удалить</a>/<a href="/admin/organization/view?id=<?=$key?>">Посмотреть</a>/<a href="/admin/organization/update?id=<?=$key?>">Изменить</a></td>
         </tr>
     <?endforeach;?>
     </tbody>

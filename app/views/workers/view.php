@@ -40,7 +40,7 @@
 			<? foreach ($items['organizations'] as $key => $value): ?>
 				<tr>
 					<th scope="row"><?=$key?></th>
-					<td><?=$value[Organization::displayName]?></td>
+					<td><a href="/admin/organization/view?id=<?=$key?>"><?=$value[Organization::displayName]?></a></td>
 					<td><?=$value[Organization::oktmo]?> </td>
 					<td><?=$value[Organization::ogrn]?> </td>
 					<td><?=$value['rate']?></td>
