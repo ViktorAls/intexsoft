@@ -22,7 +22,16 @@
 		{
 			return 'organizations';
 		}
+<<<<<<< HEAD
 		
+=======
+		public function rule (){
+			
+			return [
+				[['ogrn','oktmo'],['number']],
+			];
+		}
+>>>>>>> master
 		public function Like ($var){
 			$query = "SELECT * FROM ".self::tableName()." WHERE ". self::ogrn ." LIKE ? OR ". self::displayName ." LIKE ? OR ". self::oktmo ." LIKE ? ";
 			return $this->db->execute($query,["%$var%","%$var%","%$var%"]);

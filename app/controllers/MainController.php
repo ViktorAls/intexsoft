@@ -3,8 +3,13 @@
 	namespace app\controllers;
 	
 	use app\core\BaseController;
+<<<<<<< HEAD
 	use app\lib\User;
 	use app\models\Organization;
+=======
+	use app\models\Organization;
+	use app\models\User;
+>>>>>>> master
 	
 	class MainController extends BaseController
 	{

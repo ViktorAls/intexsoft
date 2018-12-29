@@ -46,7 +46,11 @@
 		public function update(array $array, array $id)
 		{
 			if ($this->validation($array)){
+<<<<<<< HEAD
 				if ($this->db->update(self::tableName(), $array, $id)) {
+=======
+				if ($this->db->update($this->tableName(), $array, $id)) {
+>>>>>>> master
 					$answer = true;
 				} else {
 					$answer = false;
@@ -87,15 +91,24 @@
 						foreach ($value[0] as $keys => $item){
 							if (array_key_exists($keys,$array)){
 								$method = $value[1][0];
+<<<<<<< HEAD
 								if (empty($value[1][1])){
+=======
+								$params= $value[1][1];
+								if (empty($params)){
+>>>>>>> master
 									if (!Validation::$method($item)){
 										$answer = false;
 										break 2;
 									}
 								} else {
+<<<<<<< HEAD
 									$params= $value[1][1];
 									if (!Validation::$method($item,$params)){
 										
+=======
+									if (!Validation::$method($item,$params)){
+>>>>>>> master
 										$answer = false;
 										break 2;
 									}

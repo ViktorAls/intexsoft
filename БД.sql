@@ -25,7 +25,11 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   PRIMARY KEY (`organization_id`),
   UNIQUE KEY `organizations_ogrn_unique` (`ogrn`),
   UNIQUE KEY `organizations_oktmo_unique` (`oktmo`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=178 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> master
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица test.user
@@ -41,13 +45,22 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Дамп структуры для таблица test.WorkerOrganization
 CREATE TABLE IF NOT EXISTS `WorkerOrganization` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+<<<<<<< HEAD
   `organization_id` int(11) NOT NULL DEFAULT '0',
   `id_worker` int(11) NOT NULL DEFAULT '0',
+=======
+  `organization_id` int(10) NOT NULL,
+  `id_worker` int(10) NOT NULL,
+>>>>>>> master
   `rate` decimal(3,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_organization` (`organization_id`),
   KEY `id_worker` (`id_worker`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
+>>>>>>> master
 
 -- Экспортируемые данные не выделены.
 -- Дамп структуры для таблица test.workers
@@ -59,12 +72,20 @@ CREATE TABLE IF NOT EXISTS `workers` (
   `birthday` date DEFAULT NULL,
   `inn` bigint(20) NOT NULL,
   `snils` bigint(20) NOT NULL,
+<<<<<<< HEAD
   `id_user` int(11) NOT NULL,
+=======
+  `id_user` int(11) DEFAULT NULL,
+>>>>>>> master
   PRIMARY KEY (`id_worker`),
   UNIQUE KEY `workers_inn_unique` (`inn`),
   UNIQUE KEY `workers_snils_unique` (`snils`),
   KEY `id_user` (`id_user`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+>>>>>>> master
 
 -- Экспортируемые данные не выделены.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

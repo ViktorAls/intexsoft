@@ -26,7 +26,11 @@
 		
 		
 		public function rule (){
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> master
 			return [
 				[['rate'],['range',['min'=>1,'max'=>1.75]]],
 			];

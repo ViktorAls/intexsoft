@@ -12,8 +12,12 @@
 	use app\core\BaseController;
 	use app\lib\Error;
 	use app\lib\XmlOrganization;
+<<<<<<< HEAD
 	use app\models\Organization;
 	use app\models\worker;
+=======
+
+>>>>>>> master
 	
 	class AdminController extends BaseController
 	{
@@ -24,14 +28,25 @@
 		public function before()
 		{
 			return [
+<<<<<<< HEAD
 				'organization' => ['admin'],
 				'worker' => ['admin'],
 				'view' => ['admin'],
 				'delete' => ['admin'],
+=======
+				'index' => ['admin'],
+				'view' => ['admin'],
+				'update' => ['admin'],
+				'create' => ['admin'],
+				'delete' => ['admin'],
+				'xml' => ['admin'],
+			
+>>>>>>> master
 			];
 		}
 		
 		/**
+<<<<<<< HEAD
 		 * Просмотр всех организаций
 		 */
 		public function organizationAction()
@@ -87,6 +102,10 @@
 			}
 		}
 		
+=======
+		 * Загрузка xml для обработки
+		 */
+>>>>>>> master
 		public  function  XmlAction (){
 			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 				$xml = new XmlOrganization;
@@ -96,8 +115,11 @@
 			}
 		}
 		
+<<<<<<< HEAD
 		public  function  WorkerDeleteAction (){
 		
 		}
+=======
+>>>>>>> master
 	}
 	

@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="/css/box.css">
+>>>>>>> master
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=$title?></title>
 </head>
@@ -14,6 +18,11 @@
     <nav class="my-2 my-md-0 mr-md-3">
 	    <? if($_SESSION['role'] == 'admin'):?>
             <a class="p-2 text-dark" href="/admin/organization">Оргинизации</a>
+<<<<<<< HEAD
+=======
+            <a class="p-2 text-dark" href="/admin/worker">Работники</a>
+
+>>>>>>> master
             <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
 	    <?elseif ($_SESSION['role'] == 'user'):?>
             <a class="p-2 text-dark" href="/worker/information">Информация о себе</a>
