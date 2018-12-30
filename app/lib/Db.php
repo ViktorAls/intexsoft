@@ -104,4 +104,9 @@
 			$query = 'SELECT * FROM ' . $table.' WHERE '.$key[0].' = '.$array[$key[0]].' AND '.$key[1].' = '.$array[$key[1]];
 			return $this->execute($query);
 		}
+		
+		public function ref ($value){
+			$count = $this->pdo->exec($value);
+			return $count;
+		}
 	}

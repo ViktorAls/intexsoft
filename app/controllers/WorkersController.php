@@ -84,4 +84,29 @@
 				}
 			}
 		}
+		
+		
+		public function deleteAction()
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				if (!empty($_GET['id'])) {
+					$worker = new worker();
+					if (!empty($worker->one([worker::id => $_GET['id']]))) {
+						if (!empty($worker->delete([worker::id => $_GET['id']]))) {
+							$result = ['type' => 'success', 'message' => 'Работник успешно удален'];
+						} else {
+							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
+						}
+					} else {
+						Error::run('404');
+					}
+				} else {
+					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+				}
+				$_SESSION[$result['type']] = $result['message'];
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			} else {
+				Error::run('404');
+			}
+		}
 	}

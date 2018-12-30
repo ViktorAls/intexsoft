@@ -110,4 +110,29 @@
 				Error::run('404');
 			}
 		}
+		
+		public function refAction()
+		{
+			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+				if (!empty($_GET['id'])) {
+					$workerOrganization = new WorkerOrganization();
+					if (!empty($workerOrganization->one([WorkerOrganization::id_worker => $_GET['worker']]))) {
+						if (!empty($organization->delete([Organization::id => $_GET['id']]))) {
+							$result = ['type' => 'success', 'message' => 'Организация успешно удалена'];
+						} else {
+							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
+						}
+					} else {
+						Error::run('404');
+					}
+				} else {
+					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+				}
+				$_SESSION[$result['type']] = $result['message'];
+				header('Location: ' . $_SERVER['HTTP_REFERER']);
+			} else {
+				Error::run('404');
+			}
+		}
+		
 	}

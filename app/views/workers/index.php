@@ -24,8 +24,17 @@ use app\models\worker;
 			<td><?=$value[worker::birthday]?> </td>
 			<td><?=$value[worker::inn]?> </td>
 			<td><?=$value[worker::snils]?></td>
-			<td><a href="/admin/worker/view?id=<?=$key?>">Просмотреть</a>/<a href="/admin/worker/delete?id=<?=$key?>">Удалить</a>/<a href="/admin/worker/update?id=<?=$key?>">Изменить</a></td>
-		</tr>
+            <td>
+                <div class="row">
+                    <form method="post" action="/admin/worker/delete?id=<?=$key?>">
+                        <input type="submit" value="Удалить" class="btn btn-primary btn-sm">
+                    </form><pre> </pre>
+
+                    <a href="/admin/worker/view?id=<?=$key?>" class="btn btn-primary btn-sm">Посмотреть</a> <pre> </pre>
+
+                    <a href="/admin/worker/update?id=<?=$key?>" class="btn btn-primary btn-sm">Изменить</a><pre> </pre>
+                </div>
+            </td>		</tr>
 	<?endforeach;?>
 	</tbody>
 </table>

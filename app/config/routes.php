@@ -67,6 +67,11 @@
 			'action' => 'addWorker',
 		],
 		
+		'admin/organization/ref' => [
+			'controller' => 'organizations',
+			'action' => 'ref',
+		],
+		
 		'admin/xml' => [
 			'controller' => 'admin',
 			'action' => 'xml',

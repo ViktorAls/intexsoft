@@ -1,7 +1,7 @@
 <?
 	use app\models\Organization;
 	use \app\models\worker;
-    $key = array_keys($items['infOrganization'])[0];
+    $keyOrg = array_keys($items['infOrganization'])[0];
 ?>
 
 <div class="row">
@@ -15,13 +15,13 @@
             </thead>
             <tbody>
             <tr>
-                <th scope="row"><?=$items['infOrganization'][$key][Organization::displayName]?></th>
+                <th scope="row"><?=$items['infOrganization'][$keyOrg][Organization::displayName]?></th>
             </tr>
             <tr>
-                <th scope="row">ОГРН: <?=$items['infOrganization'][$key][Organization::ogrn]?></th>
+                <th scope="row">ОГРН: <?=$items['infOrganization'][$keyOrg][Organization::ogrn]?></th>
             </tr>
             <tr>
-                <th scope="row">ОКТМО: <?=$items['infOrganization'][$key][Organization::oktmo]?></th>
+                <th scope="row">ОКТМО: <?=$items['infOrganization'][$keyOrg][Organization::oktmo]?></th>
             </tr>
             </tbody>
         </table>
@@ -45,7 +45,16 @@
                     <td><?=$value[worker::birthday]?> </td>
                     <td><?=$value[worker::inn]?> </td>
                     <td><?=$value[worker::snils]?></td>
-                    <td><a href="/admin/worker/view?id=<?=$key?>">Просмотреть</a>/<a href="/admin/worker/delete?id=<?=$key?>">Уволить</a></td>
+                    <td>
+                        <div class="row">
+                            <form method="post" action="/admin/organization/ref?worker=<?=$key?>&organization=<?=$keyOrg?>">
+                                <input type="submit" value="Уволить" class="btn btn-primary btn-sm">
+                            </form><pre> </pre>
+
+                            <a href="/admin/worker/view?id=<?=$key?>" class="btn btn-primary btn-sm">Посмотреть</a> <pre> </pre>
+                        
+                        </div>
+                    <td>
                 </tr>
             <?endforeach;?>
             </tbody>
