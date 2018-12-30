@@ -114,19 +114,15 @@
 		public function refAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-				if (!empty($_GET['id'])) {
+				if (!empty($_GET['organization']) || !empty($_GET['worker'])) {
 					$workerOrganization = new WorkerOrganization();
-					if (!empty($workerOrganization->one([WorkerOrganization::id_worker => $_GET['worker']]))) {
-						if (!empty($organization->delete([Organization::id => $_GET['id']]))) {
-							$result = ['type' => 'success', 'message' => 'Организация успешно удалена'];
+						if ($workerOrganization->ref($_GET['organization'],$_GET['worker'])>=1) {
+							$result = ['type' => 'success', 'message' => 'Работник уволен'];
 						} else {
-							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
+							$result = ['type' => 'error', 'message' => 'При увольнении произошла ошибка'];
 						}
-					} else {
-						Error::run('404');
-					}
 				} else {
-					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+					Error::run('423', 'Locked', 'Отстутствует обязательный параметр worker или organization ');
 				}
 				$_SESSION[$result['type']] = $result['message'];
 				header('Location: ' . $_SERVER['HTTP_REFERER']);

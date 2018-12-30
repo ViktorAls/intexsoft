@@ -32,4 +32,9 @@
 			];
 		}
 		
+		public function ref($IdOrganization, $IdWorker){
+			return 	$this->db->ref("DELETE FROM ".self::tableName().' where '.self::organization_id.' = '.$IdOrganization." AND ".self::id_worker.' = '.$IdWorker);
+			
+		}
+		
 	}
