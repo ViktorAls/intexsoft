@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orgs>
+	<org displayName="ООО Краснознаменск" ogrn="9697567955367" oktmo="34586905567">
+		<user firstname="Василий" middlename="Иванович" lastname="Пупкин" inn="1" snils="2" rate = "1.7" />
+	
+	</org>
+	<org displayName="ООО Краснознаменск" ogrn="9697567" oktmo="86905567">
+		<user firstname="Виталий" middlename="Петрович" lastname="Швабрин" inn="2" snils="3" rate = "1.4" />
+		<user firstname="Василий" middlename="Иванович" lastname="Пупкин" inn="44" snils="5" rate = "1.1" />
+		<user firstname="Виталий" middlename="Петрович" lastname="Швабрин" inn="8" snils="7"  rate = "1.2" />
+		<user firstname="Виталий" middlename="Петрович" lastname="Швабрин" inn="8" snils="7" rate = "1.3"  />
+	</org>
+	<org displayName="ООО Краснознаменск" ogrn="969567" oktmo="805567">
+		<user firstname="Виталий" middlename="Петрович" lastname="Швабрин" inn="8" snils="9" rate = "1.3"  />
+	</org>
+</orgs>

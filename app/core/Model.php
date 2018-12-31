@@ -52,6 +52,7 @@
 		 */
 		public function update(array $array, array $id)
 		{
+			$array = $this->neutralize($array);
 			if ($this->validation($array)){
 				if ($this->db->update($this->tableName(), $array, $id)) {
 					$answer = true;
@@ -69,6 +70,7 @@
 		 * @return bool
 		 */
 		public function save(array $value){
+			$value = $this->neutralize($value);
 			if ($this->validation($value)) {
 				if ($this->db->save($this->tableName(), $value)) {
 					$answer = true;
@@ -141,6 +143,20 @@
 				}
 			}
 			return $rules;
+		}
+		
+		public function setNeutralizeValue($value)
+		{
+			$value = strip_tags($value);
+			$value = htmlentities($value, ENT_QUOTES, "UTF-8");
+			return htmlspecialchars($value, ENT_QUOTES);
+		}
+		
+		public function neutralize($array){
+			foreach ($array as $key => $item ){
+				$array[$key]=$this->setNeutralizeValue($item);
+			}
+			return $array;
 		}
 		
 	}
