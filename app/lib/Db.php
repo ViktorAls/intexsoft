@@ -102,6 +102,7 @@
 			if ($stmt->execute($value)){
 				return true;
 			}else {
+				var_dump($stmt->errorInfo());
 				return false;
 			}
 		}

@@ -15,7 +15,9 @@
 	
 	class XmlOrganization
 	{
-		// основная функция для проверки загруженного файла и сохранении его
+		/**
+		 * @param $xml
+		 */
 		public function file($xml)
 		{
 			$uploadDir = 'uploads';
@@ -36,8 +38,8 @@
 			} else {
 				$result = ['type' => 'error', 'message' => 'Не верный формат файла.'];
 			}
-			$_SESSION[$result['type']]= $result['message'];
-			header("Location: " . $_SERVER['HTTP_REFERER']);
+			$_SESSION[$result['type']] = $result['message'];
+			return header("Location: " . $_SERVER['HTTP_REFERER']);
 		}
 		
 		/**
@@ -56,9 +58,9 @@
 				$idOrganization = key($db->findOne(Organization::tableName(), '=',
 					[Organization::ogrn => $saveOrganization[Organization::ogrn]]
 				));
-				foreach ($organization as $key => $user) {
+				foreach ($organization as $user) {
 					$user = $this->convertToArray($user);
-					$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
+					$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn => $user['inn']]);
 					if (!empty($workerBD)) {
 						$idWorker = key($workerBD);
 						$worker = $db->whereAnd(WorkerOrganization::tableName(), [
@@ -66,26 +68,29 @@
 							WorkerOrganization::id_worker => $idWorker
 						]);
 						if (empty($worker)) {
-							$this->saveConn($idWorker,$idOrganization,$user['rate']);
+							$this->saveConn($idWorker, $idOrganization, $user['rate']);
 						}
 					} else {
 						$worker = new worker();
+						$rate = $user['rate'];
 						unset($user['rate']);
 						$worker->save($user);
-						$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);
-						$idWorker = $workerBD[worker::id];
-						$this->saveConn($idWorker,$idOrganization,$user['rate']);
+						$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn => $user['inn']]);
+						$idWorker = key($workerBD);
+						$this->saveConn($idWorker, $idOrganization,$rate);
 					}
 				}
 			}
 		}
 		
-		public function convertToArray($xml){
+		public function convertToArray($xml)
+		{
 			$json = json_encode($xml->attributes());
 			return reset(json_decode($json, true));
 		}
 		
-		public function saveConn($idWorker,$idOrganization,$rate){
+		public function saveConn($idWorker, $idOrganization, $rate)
+		{
 			$WorkerOrganization = new WorkerOrganization();
 			$WorkerOrganization->save([WorkerOrganization::id_worker => $idWorker,
 				WorkerOrganization::organization_id => $idOrganization,

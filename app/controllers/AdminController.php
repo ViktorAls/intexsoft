@@ -12,7 +12,7 @@
 	use app\core\BaseController;
 	use app\lib\Error;
 	use app\lib\XmlOrganization;
-
+	
 	
 	class AdminController extends BaseController
 	{
@@ -36,12 +36,13 @@
 		/**
 		 * Загрузка xml для обработки
 		 */
-		public  function  XmlAction (){
-			if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+		public function XmlAction()
+		{
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$xml = new XmlOrganization;
 				$xml->file($_FILES['file']);
 			} else {
-				Error::run('404');
+				return Error::run('404');
 			}
 		}
 		
