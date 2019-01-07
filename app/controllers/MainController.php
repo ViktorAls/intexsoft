@@ -17,6 +17,9 @@
 			];
 		}
 		
+		/**
+		 * @return mixed
+		 */
 		public function indexAction()
 		{
 			$organization = new Organization();

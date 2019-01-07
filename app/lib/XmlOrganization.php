@@ -83,12 +83,21 @@
 			}
 		}
 		
+		/**
+		 * @param $xml
+		 * @return mixed
+		 */
 		public function convertToArray($xml)
 		{
 			$json = json_encode($xml->attributes());
 			return reset(json_decode($json, true));
 		}
 		
+		/**
+		 * @param int $idWorker
+		 * @param int $idOrganization
+		 * @param double $rate
+		 */
 		public function saveConn($idWorker, $idOrganization, $rate)
 		{
 			$WorkerOrganization = new WorkerOrganization();

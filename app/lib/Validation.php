@@ -11,6 +11,11 @@
 	
 	abstract class Validation
 	{
+		/**
+		 * @param integer $value
+		 * @param array $options
+		 * @return bool
+		 */
 		public static function range($value, array $options)
 		{
 			if ($value >= $options['min'] && $value <= $options['max']) {

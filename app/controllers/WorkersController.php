@@ -16,7 +16,7 @@
 	{
 		
 		/**
-		 * Просмотр работника
+		 * @return mixed
 		 */
 		public function viewAction()
 		{
@@ -35,6 +35,9 @@
 			}
 		}
 		
+		/**
+		 * @return mixed
+		 */
 		public function indexAction()
 		{
 			$worker = new worker();
@@ -42,6 +45,9 @@
 			return $this->views->render('Все люди', ['user' => $user]);
 		}
 		
+		/**
+		 * @return mixed|void
+		 */
 		public function createAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -58,6 +64,9 @@
 			}
 		}
 		
+		/**
+		 * @return mixed|void
+		 */
 		public function updateAction()
 		{
 			$worker = new worker();
@@ -84,7 +93,9 @@
 			}
 		}
 		
-		
+		/**
+		 * @return mixed|void
+		 */
 		public function deleteAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {

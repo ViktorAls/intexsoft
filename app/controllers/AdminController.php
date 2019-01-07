@@ -36,6 +36,9 @@
 		/**
 		 * Загрузка xml для обработки
 		 */
+		/**
+		 * @return mixed
+		 */
 		public function XmlAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {

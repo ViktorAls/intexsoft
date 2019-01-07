@@ -31,6 +31,7 @@
 		 * @param integer $code
 		 * @param null/string $title
 		 * @param null/string $message
+		 * @return mixed
 		 */
 		public static function run($code,$title=null,$message = null)
 		{

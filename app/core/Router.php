@@ -18,12 +18,19 @@
 			}
 		}
 		
+		/**
+		 * @param $route
+		 * @param $params
+		 */
 		public function add($route, $params)
 		{
 			$route = '#^' . $route . '$#';
 			$this->routes[$route] = $params;
 		}
 		
+		/**
+		 * @return bool
+		 */
 		public function match()
 		{
 			$flag = false;
@@ -41,6 +48,9 @@
 			return $flag;
 		}
 		
+		/**
+		 * @return mixed
+		 */
 		public function run()
 		{
 			if ($this->match()) {

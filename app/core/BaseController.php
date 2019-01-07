@@ -16,6 +16,10 @@
 		public $route;
 		protected $views;
 		
+		/**
+		 * BaseController constructor.
+		 * @param $route
+		 */
 		public function __construct($route)
 		{
 			$this->route = $route;
@@ -25,6 +29,9 @@
 			$this->views = new View($route);
 		}
 		
+		/**
+		 * @return bool
+		 */
 		public function Access()
 		{
 			$access = true;

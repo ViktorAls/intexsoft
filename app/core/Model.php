@@ -133,6 +133,10 @@
 			return $rules;
 		}
 		
+		/**
+		 * @param string $value
+		 * @return string
+		 */
 		public function setNeutralizeValue($value)
 		{
 			$value = strip_tags($value);
@@ -140,7 +144,11 @@
 			return htmlspecialchars($value, ENT_QUOTES);
 		}
 		
-		public function neutralize($array){
+		/**
+		 * @param array $array
+		 * @return mixed
+		 */
+		public function neutralize(array $array){
 			foreach ($array as $key => $item ){
 				$array[$key]=$this->setNeutralizeValue($item);
 			}
