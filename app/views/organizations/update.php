@@ -8,7 +8,7 @@
 			</div>
 			<div class="box-body">
 				<div>
-					<?
+					<?php
 					$keyOrganization = key($items['organization']);
 					?>
 					<form action="/admin/organization/update?id=<?=$keyOrganization?>" method="post">

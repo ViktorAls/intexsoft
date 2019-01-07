@@ -1,4 +1,4 @@
-<?
+<?php
 	use app\models\Organization;
 	use \app\models\worker;
     $keyOrg = array_keys($items['infOrganization'])[0];
@@ -38,7 +38,7 @@
             </tr>
             </thead>
             <tbody>
-            <? foreach ($items['workers'] as $key => $value): ?>
+            <?php foreach ($items['workers'] as $key => $value): ?>
                 <tr>
                     <th scope="row"><?=$key?></th>
                     <td><?=$value[worker::middlename]?> <?=$value[worker::firstname]?> <?=$value[worker::lastname]?></td>
@@ -56,7 +56,7 @@
                         </div>
                     <td>
                 </tr>
-            <?endforeach;?>
+            <?php endforeach;?>
             </tbody>
         </table>
     </div>

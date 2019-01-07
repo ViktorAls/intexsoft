@@ -1,4 +1,4 @@
-<?
+<?php
 	use app\models\Organization;
 	use \app\models\worker;
 	$key = array_keys($items['user'])[0];
@@ -37,7 +37,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<? foreach ($items['organizations'] as $key => $value): ?>
+			<?php foreach ($items['organizations'] as $key => $value): ?>
 				<tr>
 					<th scope="row"><?=$key?></th>
 					<td><a href="/admin/organization/view?id=<?=$key?>"><?=$value[Organization::displayName]?></a></td>
@@ -45,7 +45,7 @@
 					<td><?=$value[Organization::ogrn]?> </td>
 					<td><?=$value['rate']?></td>
 				</tr>
-			<?endforeach;?>
+			<?php endforeach;?>
 			</tbody>
 		</table>
 	</div>

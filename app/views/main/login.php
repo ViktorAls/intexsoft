@@ -12,7 +12,7 @@
         <button type="submit" class="btn btn-primary">Авторизоваться</button>
     </form>
     <br>
-	<?if(isset($items['error'])):?>
+	<?php if(isset($items['error'])):?>
         <b>Ошибка: </b><?=$items['error'];?>
-	<?endif;?>
+	<?php endif;?>
 

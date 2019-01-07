@@ -1,4 +1,4 @@
-<?
+<?php
 use app\models\worker;
 ?>
 
@@ -17,7 +17,7 @@ use app\models\worker;
     </tr>
 	</thead>
 	<tbody>
-	<? foreach ($items['user'] as $key => $value): ?>
+	<?php foreach ($items['user'] as $key => $value): ?>
 		<tr>
 			<th scope="row"><?=$key?></th>
 			<td><?=$value[worker::middlename]?> <?=$value[worker::firstname]?> <?=$value[worker::lastname]?></td>
@@ -35,7 +35,7 @@ use app\models\worker;
                     <a href="/admin/worker/update?id=<?=$key?>" class="btn btn-primary btn-sm">Изменить</a><pre> </pre>
                 </div>
             </td>		</tr>
-	<?endforeach;?>
+	<?php endforeach;?>
 	</tbody>
 </table>
 	

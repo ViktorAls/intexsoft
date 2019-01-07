@@ -1,3 +1,6 @@
+<?php
+	$keyWorker = key($items['worker']);
+?>
 <div class="row">
 	<div class="col-md-3"></div>
 	<div class="col-md-6">
@@ -8,9 +11,6 @@
 			</div>
 			<div class="box-body">
 				<div>
-					<?
-						$keyWorker = key($items['worker']);
-					?>
 					<form action="/admin/worker/update?id=<?=$keyWorker?>" method="post">
 					
 					<div class="row">
@@ -61,7 +61,6 @@
 							</div>
 						</div>
 					</form>
-					
 				</div>
 			</div>
 			<div class="box-footer"></div>

@@ -8,7 +8,6 @@
 			</div>
 			<div class="box-body">
 				<div>
-					
 					<form action="/admin/worker/create" method="post">
 						<div class="row">
 							<div class="col-md-6">

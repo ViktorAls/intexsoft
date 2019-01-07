@@ -39,7 +39,7 @@
     </tr>
     </thead>
     <tbody>
-    <?foreach ($items['organization'] as $key => $value):?>
+    <?php foreach ($items['organization'] as $key => $value):?>
         <tr>
             <th scope="row"><?=$key?></th>
             <td><?=$value['displayName']?></td>
@@ -57,6 +57,6 @@
                 </div>
             </td>
         </tr>
-    <?endforeach;?>
+    <?php endforeach;?>
     </tbody>
 </table>

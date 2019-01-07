@@ -9,14 +9,14 @@
         </form>
     </div>
 </div>
-<?if ($items['organization'] != null):?>
-    <?foreach ($items['organization'] as $item):?>
+<?php if ($items['organization'] != null):?>
+    <?php foreach ($items['organization'] as $item):?>
         <div class="drop-shadow lifted">
             <p><?=$item['displayName']?></p>
             <div><b>ОГРН:</b> <?=$item['ogrn']?></div>
             <div><b>ОКТМО:</b> <?=$item['oktmo']?></div>
         </div>
-    <?endforeach;?>
-<?else:?>
+    <?php endforeach;?>
+<?php else:?>
     <p>По вашему запросу "<?=$_GET['search']?>" результатов не найдено.</p>
-<?endif;?>
+<?php endif;?>
