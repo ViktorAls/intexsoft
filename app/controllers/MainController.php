@@ -21,9 +21,9 @@
 		{
 			$organization = new Organization();
 			if (!empty($_GET['search'])) {
-				$this->views->render('Главная страница', ['organization' => $organization->Like($_GET['search'])]);
+				return $this->views->render('Главная страница', ['organization' => $organization->Like($_GET['search'])]);
 			} else {
-				$this->views->render('Все организации', ['organization' => $organization->all()]);
+				return $this->views->render('Все организации', ['organization' => $organization->all()]);
 			}
 			
 		}
@@ -34,31 +34,28 @@
 				if (!empty($_POST['name']) || !empty($_POST['password'])) {
 					$user = new User($_POST['name'], $_POST['password']);
 					if (!$user->Login()) {
-						$this->views->render('Авторизация', ['error' => 'Не верный логин/пароль.']);
+						return $this->views->render('Авторизация', ['error' => 'Не верный логин/пароль.']);
 					} else {
-						header("Location:/");
+						return header("Location:/");
 					}
 				} else {
-					$this->views->render('Авторизация');
+					return $this->views->render('Авторизация');
 				}
 			} else {
-				header("Location:/");
+				return header("Location:/");
 			}
 		}
 		
 		public function organizationAction()
 		{
-			$this->views->render('Просмотр информации о оргонизации');
-			
+		 return	$this->views->render('Просмотр информации о организации');
 		}
 		
 		public function logoutAction()
 		{
 			if (!empty($_SESSION['role']) && $_SESSION['role'] != 'gust') {
 				User::logout();
-				header("Location:/");
-			} else {
-				header("Location:/");
 			}
+			header("Location:/");
 		}
 	}

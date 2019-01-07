@@ -1,4 +1,5 @@
 <?php
+	
 	namespace app\core;
 	
 	use app\lib\Error;
@@ -11,7 +12,7 @@
 		
 		public function __construct()
 		{
-			$arr = require_once 'app\config\routes.php';
+			$arr = require_once 'app/config/routes.php';
 			foreach ($arr as $key => $val) {
 				$this->add($key, $val);
 			}
@@ -25,18 +26,19 @@
 		
 		public function match()
 		{
+			$flag = false;
 			$url = trim($_SERVER['REQUEST_URI'], '/');
-			If(strpbrk($url, ' ?')){
-	 	    $url = stristr($url, '?',true);
+			If (strpbrk($url, ' ?')) {
+				$url = stristr($url, '?', true);
 			}
 			
 			foreach ($this->routes as $route => $params) {
 				if (preg_match($route, $url, $matches)) {
 					$this->params = $params;
-					return true;
+					$flag = true;
 				}
 			}
-			return false;
+			return $flag;
 		}
 		
 		public function run()
@@ -47,16 +49,11 @@
 					$action = $this->params['action'] . 'Action';
 					if (method_exists($path, $action)) {
 						$controller = new $path($this->params);
-						$controller->$action();
-					} else {
-						Error::run(404);
+						return $controller->$action();
 					}
-				} else {
-					Error::run(404);
 				}
-			} else {
-				Error::run(404);
 			}
+			return Error::run(56,'Контроллер или action не найдены');
 		}
 	}
 	

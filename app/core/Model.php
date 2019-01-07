@@ -20,7 +20,7 @@
 		
 		public function __construct()
 		{
-			$this->db = new Db();
+			$this->db = Db::getInstance();
 		}
 		
 		public function all()
@@ -52,15 +52,12 @@
 		 */
 		public function update(array $array, array $id)
 		{
+			$answer = false;
 			$array = $this->neutralize($array);
 			if ($this->validation($array)){
 				if ($this->db->update($this->tableName(), $array, $id)) {
 					$answer = true;
-				} else {
-					$answer = false;
 				}
-			} else {
-				$answer = false;
 			}
 			return $answer;
 		}
@@ -70,16 +67,12 @@
 		 * @return bool
 		 */
 		public function save(array $value){
+			$answer = false;
 			$value = $this->neutralize($value);
 			if ($this->validation($value)) {
 				if ($this->db->save($this->tableName(), $value)) {
 					$answer = true;
-				} else {
-					
-					$answer = false;
 				}
-			} else {
-				$answer = false;
 			}
 			return $answer;
 			
@@ -91,10 +84,9 @@
 		 */
 		public function validation($array)
 		{
+			$answer = true;
 			if (method_exists($this, 'rule')) {
-				$answer = true;
 				$rules =$this->validFieldValues($array);
-				
 				if (!empty($rules)) {
 					foreach ($rules as $key => $value){
 						foreach ($value[0] as $keys => $item){
@@ -115,11 +107,7 @@
 							}
 						}
 					}
-				} else {
-					$answer = true;
 				}
-			} else {
-				$answer = true;
 			}
 			return $answer;
 		}

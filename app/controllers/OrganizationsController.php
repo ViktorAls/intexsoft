@@ -52,6 +52,9 @@
 			}
 		}
 		
+		/**
+		 * @return mixed
+		 */
 		public function createAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -64,7 +67,7 @@
 				$_SESSION[$result['type']] = $result['message'];
 				header('Location: ' . $_SERVER['REQUEST_URI']);
 			} else {
-				$this->views->render('Добавить новую организацию');
+				return $this->views->render('Добавить новую организацию');
 			}
 		}
 		
@@ -79,11 +82,11 @@
 				$workers = $organization->workersOrganization($_GET['id']);
 				$infOrganization = $organization->one([Organization::id => $_GET['id']]);
 				if (empty($infOrganization)) {
-					Error::run('404');
+					return Error::run('404');
 				}
-				$this->views->render('Просмотреть всю организацию', ['infOrganization' => $infOrganization, 'workers' => $workers]);
+				return $this->views->render('Просмотреть всю организацию', ['infOrganization' => $infOrganization, 'workers' => $workers]);
 			} else {
-				Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+				return Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
 			}
 		}
 		
@@ -99,15 +102,15 @@
 							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
 						}
 					} else {
-						Error::run('404');
+						return Error::run('404');
 					}
 				} else {
-					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+					return Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
 				}
 				$_SESSION[$result['type']] = $result['message'];
-				header('Location: ' . $_SERVER['HTTP_REFERER']);
+				return header('Location: ' . $_SERVER['HTTP_REFERER']);
 			} else {
-				Error::run('404');
+				return Error::run('404');
 			}
 		}
 		
@@ -116,18 +119,18 @@
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				if (!empty($_GET['organization']) || !empty($_GET['worker'])) {
 					$workerOrganization = new WorkerOrganization();
-						if ($workerOrganization->ref($_GET['organization'],$_GET['worker'])>=1) {
-							$result = ['type' => 'success', 'message' => 'Работник уволен'];
-						} else {
-							$result = ['type' => 'error', 'message' => 'При увольнении произошла ошибка'];
-						}
+					if ($workerOrganization->ref($_GET['organization'], $_GET['worker']) >= 1) {
+						$result = ['type' => 'success', 'message' => 'Работник уволен'];
+					} else {
+						$result = ['type' => 'error', 'message' => 'Произошла ошибка'];
+					}
 				} else {
-					Error::run('423', 'Locked', 'Отстутствует обязательный параметр worker или organization ');
+					return Error::run('423', 'Locked', 'Отстутствует обязательный параметр worker или organization ');
 				}
 				$_SESSION[$result['type']] = $result['message'];
-				header('Location: ' . $_SERVER['HTTP_REFERER']);
+				return header('Location: ' . $_SERVER['HTTP_REFERER']);
 			} else {
-				Error::run('404');
+				return Error::run('404');
 			}
 		}
 		

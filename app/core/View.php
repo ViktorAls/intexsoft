@@ -21,12 +21,17 @@
 			$this->path = $route['controller'] . '/' . $route['action'];
 		}
 		
+		/**
+		 * @param $title
+		 * @param array $items
+		 * @return mixed
+		 */
 		public function render($title, $items = [])
 		{
 			ob_start();
 			require 'app/views/' . $this->path . '.php';
 			$content = ob_get_clean();
-			require 'app/views/layout/' . $this->layout . '.php';
-			exit();
+			return require_once 'app/views/layout/' . $this->layout . '.php';
+			
 		}
 	}

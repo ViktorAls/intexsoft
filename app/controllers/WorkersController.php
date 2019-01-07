@@ -10,7 +10,7 @@
 	
 	
 	use app\lib\Error;
-	use app\models\worker;
+	use app\models\Worker;
 	
 	class WorkersController extends AdminController
 	{
@@ -26,12 +26,12 @@
 				$user = array_shift($user);
 				if (!empty($user)) {
 					$organizations = $worker->workerOrganizations([worker::id => $_GET['id']]);
-					$this->views->render('Личные данные работника', ['user' => $user, 'organizations' => $organizations]);
+					return $this->views->render('Личные данные работника', ['user' => $user, 'organizations' => $organizations]);
 				} else {
-					Error::run('404');
+					return Error::run('404');
 				}
-			}else {
-				Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+			} else {
+				return Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
 			}
 		}
 		
@@ -39,22 +39,22 @@
 		{
 			$worker = new worker();
 			$user = $worker->all();
-			$this->views->render('Все люди', ['user' => $user]);
-			
+			return $this->views->render('Все люди', ['user' => $user]);
 		}
+		
 		public function createAction()
 		{
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$worker = new worker();
-				if($worker->save($_POST['worker'])){
+				if ($worker->save($_POST['worker'])) {
 					$result = ['type' => 'success', 'message' => 'Работник успешно добавлен'];
 				} else {
 					$result = ['type' => 'error', 'message' => 'При сохранении произошла ошибка'];
 				}
-				$_SESSION[$result['type']]= $result['message'];
-				header('Location: ' . $_SERVER['REQUEST_URI']);
+				$_SESSION[$result['type']] = $result['message'];
+				return header('Location: ' . $_SERVER['REQUEST_URI']);
 			} else {
-				$this->views->render('Добавить новую организацию');
+				return $this->views->render('Добавить новую организацию');
 			}
 		}
 		
@@ -62,25 +62,24 @@
 		{
 			$worker = new worker();
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-				if($worker->update($_POST['worker'], [worker::id => $_GET['id']])){
+				if ($worker->update($_POST['worker'], [worker::id => $_GET['id']])) {
 					$result = ['type' => 'success', 'message' => 'Работник успешно обновлен'];
 				} else {
 					$result = ['type' => 'error', 'message' => 'При обнавлении произошла ошибка'];
 				}
-				$_SESSION[$result['type']]= $result['message'];
-				header('Location: ' . $_SERVER['REQUEST_URI']);
+				$_SESSION[$result['type']] = $result['message'];
+				return header('Location: ' . $_SERVER['REQUEST_URI']);
 			} else {
 				if (!empty($_GET['id'])) {
 					$id = $_GET['id'];
 					$worker = $worker->one([worker::id => $id]);
 					if ($worker) {
-						$this->views->render('Обновление рабочего', ['worker' => $worker]);
+						return $this->views->render('Обновление рабочего', ['worker' => $worker]);
 					} else {
-						Error::run('404');
-						
+						return Error::run('404');
 					}
 				} else {
-					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+					return Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
 				}
 			}
 		}
@@ -98,15 +97,15 @@
 							$result = ['type' => 'error', 'message' => 'При удалении произошла ошибка'];
 						}
 					} else {
-						Error::run('404');
+						return Error::run('404');
 					}
 				} else {
-					Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
+					return Error::run('423', 'Locked', 'Отстутствует обязательный параметр id ');
 				}
 				$_SESSION[$result['type']] = $result['message'];
-				header('Location: ' . $_SERVER['HTTP_REFERER']);
+				return header('Location: ' . $_SERVER['HTTP_REFERER']);
 			} else {
-				Error::run('404');
+				return Error::run('404');
 			}
 		}
 	}

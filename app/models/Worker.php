@@ -11,7 +11,7 @@
 	
 	use app\core\Model;
 	
-	class worker extends Model
+	class Worker extends Model
 	{
 		
 		const id = 'id_worker';

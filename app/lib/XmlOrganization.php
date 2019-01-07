@@ -48,12 +48,14 @@
 		 */
 		public function treatment($xml)
 		{
-			$db = new Db();
+			$db = Db::getInstance();
 			$organ = new Organization();
 			foreach ($xml->org as $organization) {
 				$saveOrganization = $this->convertToArray($organization);
 				$organ->save($saveOrganization);
-				$idOrganization = key($db->findOne(Organization::tableName(), '=', [Organization::ogrn => $saveOrganization[Organization::ogrn]]));
+				$idOrganization = key($db->findOne(Organization::tableName(), '=',
+					[Organization::ogrn => $saveOrganization[Organization::ogrn]]
+				));
 				foreach ($organization as $key => $user) {
 					$user = $this->convertToArray($user);
 					$workerBD = $db->findOne(worker::tableName(), '=', [worker::inn=>$user['inn']]);

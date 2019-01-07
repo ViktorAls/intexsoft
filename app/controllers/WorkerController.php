@@ -26,12 +26,12 @@
 			if (!empty($user)) {
 				if (!empty($_POST['worker'])) {
 					$worker->update($_POST['worker'], [worker::id => $id]);
-					header("Refresh:0");
+					return header("Refresh:0");
 				}
-				$organization = $worker->workerOrganizations([worker::id_user=>$_SESSION['idUser']]);
-				$this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);
+				$organization = $worker->workerOrganizations([worker::id_user => $_SESSION['idUser']]);
+				return $this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);
 			} else {
-				Error::run('404');
+				return Error::run('404');
 			}
 		}
 	}

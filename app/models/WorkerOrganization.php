@@ -25,12 +25,13 @@
 		}
 		
 		
-		public function rule (){
-			
-			return [
-				[['rate'],['range',['min'=>1,'max'=>1.75]]],
-			];
-		}
+		// Разобраться с валидацией, почему она не проходит
+//		public function rule (){
+//
+//			return [
+//				[['rate'],['range',['min'=>1,'max'=>1.8]]],
+//			];
+//		}
 		
 		public function ref($IdOrganization, $IdWorker){
 			return 	$this->db->ref("DELETE FROM ".self::tableName().' where '.self::organization_id.' = '.$IdOrganization." AND ".self::id_worker.' = '.$IdWorker);

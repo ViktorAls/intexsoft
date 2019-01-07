@@ -27,24 +27,18 @@
 		
 		public function Access()
 		{
+			$access = true;
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
 				if (empty($_SESSION['role'])) {
 					$_SESSION['role'] = 'gust';
 				}
 				if (array_key_exists($this->route['action'], $role)) {
-					if (in_array($_SESSION['role'], $role[$this->route['action']])) {
-						$access = true;
-					} else {
+					if (!in_array($_SESSION['role'], $role[$this->route['action']])) {
 						$access = false;
 					}
-				} else {
-					$access = true;
 				}
-			} else {
-				$access = true;
 			}
-			
 			return $access;
 		}
 		

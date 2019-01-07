@@ -16,10 +16,27 @@
 		
 		protected $pdo;
 		
+		/**
+		 * @var bool;
+		 */
+		private static $instance;
+		
 		public function __construct()
 		{
 			$settings = $this->getPDOSettings();
 			$this->pdo = new \PDO($settings['dsn'], $settings['user'], $settings['pass'], null);
+		}
+		
+		/**
+		 * @return Db|bool
+		 */
+		public static function getInstance()
+		{
+			if (null === self::$instance)
+			{
+				self::$instance = new self();
+			}
+			return self::$instance;
 		}
 		
 		protected function getPDOSettings()

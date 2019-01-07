@@ -20,6 +20,10 @@
 			}
 		}
 		
+		/**
+		 * @param string $value
+		 * @return bool
+		 */
 		public static function required ($value){
 			if (!empty($value)){
 				return true;
@@ -28,6 +32,10 @@
 			}
 		}
 		
+		/**
+		 * @param string $value
+		 * @return bool
+		 */
 		public static function number($value)
 		{
 			if (ctype_digit($value)) {
@@ -37,6 +45,11 @@
 			}
 		}
 		
+		/**
+		 * @param $date
+		 * @param string $format
+		 * @return bool
+		 */
 		public static function date($date,$format='Y-m-d')
 		{
 			if ($date < date($format)) {

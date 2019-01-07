@@ -27,14 +27,24 @@
 		
 		];
 		
+		/**
+		 * @param integer $code
+		 * @param null/string $title
+		 * @param null/string $message
+		 */
 		public static function run($code,$title=null,$message = null)
 		{
 			$vib = new View(['action' => 'error', 'controller' => 'main']);
 		
-			$vib->render('Ошибка', self::getError($code,$title,$message));
-			exit();
+			return $vib->render('Ошибка', self::getError($code,$title,$message));
 		}
 		
+		/**
+		 * @param integer $code
+		 * @param null/string $title
+		 * @param null/string $message
+		 * @return array
+		 */
 		private static function getError($code,$title = null,$message = null)
 		{
 			if (empty($message)) {
@@ -44,7 +54,7 @@
 						'title' => self::ERROR[$code]['title']];
 				} else {
 					$bodyError = ['code' => $code,
-						'message' => 'Произзошла неопознанная ошибка, мы постараемся исправить ее в ближайшее время',
+						'message' => 'Произошла неопознанная ошибка, мы постараемся исправить ее в ближайшее время',
 						'title' => 'ERROR'];
 				}
 			} else {
