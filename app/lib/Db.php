@@ -102,27 +102,45 @@
 			if ($stmt->execute($value)){
 				return true;
 			}else {
-				var_dump($stmt->errorInfo());
 				return false;
 			}
 		}
 		
+		/**
+		 * @params string $tableName
+		 * @return int
+		 */
 		public function deleteALL ($tableName){
 			$count = $this->pdo->exec("DELETE FROM ".$tableName);
 			return $count;
 		}
 		
+		/**
+		 * @param string $tableName
+		 * @param string $sign
+		 * @param array $id
+		 * @return int
+		 */
 		public function delete ($tableName,$sign, array $id){
 			$count = $this->pdo->exec("DELETE FROM ".$tableName.' where '.key($id).' '.$sign.' '.reset($id));
 			return $count;
 		}
 		
+		/**
+		 * @param string $table
+		 * @param array $array
+		 * @return array
+		 */
 		public function whereAnd($table,array $array){
 			$key = array_keys($array);
 			$query = 'SELECT * FROM ' . $table.' WHERE '.$key[0].' = '.$array[$key[0]].' AND '.$key[1].' = '.$array[$key[1]];
 			return $this->execute($query);
 		}
 		
+		/**
+		 * @param $value
+		 * @return int
+		 */
 		public function ref ($value){
 			$count = $this->pdo->exec($value);
 			return $count;
