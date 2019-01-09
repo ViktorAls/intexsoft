@@ -41,7 +41,7 @@
 		
 		protected function getPDOSettings()
 		{
-			$config = include 'app\config\Db.php';
+			$config = include 'app/config/Db.php';
 			$result['dsn'] = "{$config['type']}:host={$config['host']};dbname={$config['dbname']};charset={$config['charset']}";
 			$result['user'] = $config['user'];
 			$result['pass'] = $config['pass'];
