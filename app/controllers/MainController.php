@@ -51,6 +51,7 @@
 		
 		public function organizationAction()
 		{
+
 		 return	$this->views->render('Просмотр информации о организации');
 		}
 		

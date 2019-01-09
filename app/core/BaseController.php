@@ -13,7 +13,13 @@
 	
 	abstract class BaseController
 	{
+        /**
+         * @var array
+         */
 		public $route;
+        /**
+         * @var View
+         */
 		protected $views;
 		
 		/**

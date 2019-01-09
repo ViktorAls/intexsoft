@@ -22,13 +22,18 @@
 		const inn = 'inn';
 		const snils = 'snils';
 		const birthday = 'birthday';
-		
+
+        /**
+         * @return string
+         */
 		public static function tableName()
 		{
 			return 'workers';
 		}
-		
-		
+
+        /**
+         * @return array
+         */
 		public function rule (){
 			
 			return [
@@ -47,7 +52,11 @@
 			$query = "SELECT " . Organization::tableName() . ".*,".WorkerOrganization::tableName().".".WorkerOrganization::rate." FROM (" . Organization::tableName() . " JOIN ".WorkerOrganization::tableName()." USING (" . Organization::id . ")) JOIN " . self::tableName() . " USING (" . self::id . ") where " . self::tableName() . "." . key($id).' = '.reset($id);
 			return $this->db->execute($query);
 		}
-		
+
+        /**
+         * @param array $id
+         * @return bool
+         */
 		public function delete(array $id)
 		{
 			$this->db->delete(WorkerOrganization::tableName(),'=',[WorkerOrganization::id_worker => reset($id)]);

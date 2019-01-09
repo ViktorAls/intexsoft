@@ -16,7 +16,7 @@
 	class XmlOrganization
 	{
 		/**
-		 * @param $xml
+		 * @param array $xml
 		 */
 		public function file($xml)
 		{

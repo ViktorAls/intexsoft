@@ -13,7 +13,9 @@
 	
 	class Db
 	{
-		
+        /**
+         * @var PDO
+         */
 		protected $pdo;
 		
 		/**
