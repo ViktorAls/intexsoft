@@ -17,10 +17,13 @@
 		protected $pdo;
 		
 		/**
-		 * @var bool;
+		 * @var Db;
 		 */
 		private static $instance;
-		
+
+        /**
+         * Db constructor.
+         */
 		public function __construct()
 		{
 			$settings = $this->getPDOSettings();
@@ -28,7 +31,7 @@
 		}
 		
 		/**
-		 * @return Db|bool
+		 * @return Db
 		 */
 		public static function getInstance()
 		{
@@ -38,7 +41,10 @@
 			}
 			return self::$instance;
 		}
-		
+
+        /**
+         * @return mixed
+         */
 		protected function getPDOSettings()
 		{
 			$config = include 'app/config/Db.php';
@@ -47,7 +53,12 @@
 			$result['pass'] = $config['pass'];
 			return $result;
 		}
-		
+
+        /**
+         * @param string $query
+         * @param array|null $params
+         * @return array
+         */
 		public function execute($query, array $params = null)
 		{
 			if (is_null($params)) {
@@ -58,13 +69,23 @@
 			$stmt->execute($params);
 			return $stmt->fetchAll(PDO::FETCH_UNIQUE);
 		}
-		
+
+        /**
+         * @param string $table
+         * @return array
+         */
 		public function findAll($table)
 		{
 			$query = 'SELECT * FROM ' . $table;
 			return $this->execute($query);
 		}
-		
+
+        /**
+         * @param string $table
+         * @param string $sign
+         * @param array $id
+         * @return array
+         */
 		public function findOne($table, $sign, array $id)
 		{
 			$query = 'SELECT * FROM ' . $table . ' WHERE ' . key($id) . ' ' . $sign . ' ' . reset($id) . ' limit 1';
@@ -93,7 +114,12 @@
 				return false;
 			}
 		}
-		
+
+        /**
+         * @param string $table
+         * @param array $value
+         * @return bool
+         */
 		public function save($table, array $value){
 			$key = array_keys($value);
 			$fields = implode(',',$key);

@@ -7,15 +7,33 @@
 	 */
 	
 	namespace app\core;
-	
-	
+
+    /**
+     * Class View
+     * @package app\core
+     */
 	class View
 	{
+        /**
+         * @var array $route
+         */
 		public $route;
+
+		/**
+         * @var string $route
+         */
 		public $path;
+
+        /**
+         * @var string $layout
+         */
 		public $layout = 'default';
-		
-		public function __construct($route)
+
+        /**
+         * View constructor.
+         * @param $route
+         */
+		public function __construct( array $route)
 		{
 			$this->route = $route;
 			$this->path = $route['controller'] . '/' . $route['action'];
