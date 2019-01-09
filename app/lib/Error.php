@@ -29,8 +29,8 @@
 		
 		/**
 		 * @param integer $code
-		 * @param null/string $title
-		 * @param null/string $message
+		 * @param null|string $title
+		 * @param null|string $message
 		 * @return mixed
 		 */
 		public static function run($code,$title=null,$message = null)
@@ -42,8 +42,8 @@
 		
 		/**
 		 * @param integer $code
-		 * @param null/string $title
-		 * @param null/string $message
+		 * @param null|string $title
+		 * @param null|string $message
 		 * @return array
 		 */
 		private static function getError($code,$title = null,$message = null)

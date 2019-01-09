@@ -23,16 +23,22 @@
 		{
 			return 'WorkerOrganization';
 		}
-		
-		
-//		 Разобраться с валидацией, почему она не проходит
+
+        /**
+         * @return array
+         */
 		public function rule (){
 
 			return [
 				[['rate'],['range',['min'=>1,'max'=>1.75]]],
 			];
 		}
-		
+
+        /**
+         * @param integer $IdOrganization
+         * @param integer $IdWorker
+         * @return int
+         */
 		public function ref($IdOrganization, $IdWorker){
 			return 	$this->db->ref("DELETE FROM ".self::tableName().' where '.self::organization_id.' = '.$IdOrganization." AND ".self::id_worker.' = '.$IdWorker);
 		}
