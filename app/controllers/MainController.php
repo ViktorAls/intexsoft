@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\core\BaseController;
+use app\lib\Error;
 use app\lib\Request;
 use app\lib\Session;
 use app\models\Organization;
 use app\models\User;
+use Exception;
 
 class MainController extends BaseController
 {
@@ -35,7 +37,7 @@ class MainController extends BaseController
 
     public function loginAction()
     {
-        if (!Session::isSession('role') || Session::get('role') == 'gust') {
+        if (!Session::isNotNull('role') || Session::get('role') == 'gust') {
             if (!empty(Request::post('name')) || !empty(Request::post('password'))) {
                 $user = new User(Request::post('name'), Request::post('password'));
                 if (!$user->Login()) {
@@ -58,7 +60,7 @@ class MainController extends BaseController
 
     public function logoutAction()
     {
-        if (Session::isSession('role') || Session::get('role') != 'gust') {
+        if (Session::isNotNull('role') || Session::get('role') != 'gust') {
             User::logout();
         }
         header("Location:/");

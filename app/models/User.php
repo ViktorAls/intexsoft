@@ -35,7 +35,7 @@
 		
 		public static function logout()
 		{
-			if (session::isSession('idUser') || session::isSession('role')) {
+			if (session::isNotNull('idUser') || session::isNotNull('role')) {
 			    Session::delete('idUser');
                 Session::delete('role');
 			}

@@ -31,7 +31,7 @@
 				$organization = $worker->workerOrganizations([worker::id_user => $_SESSION['idUser']]);
 				return $this->views->render('Личные данные работника', ['user' => $user, 'organization' => $organization]);
 			} else {
-				return Error::run('404');
+                throw new Error('Страница не найдена',404);
 			}
 		}
 	}

@@ -21,6 +21,13 @@ class Request
         return isset($_GET[$key]) ? $_GET[$key] : null;
     }
 
+    public static function getNotNull($key){
+        return empty($_GET[$key]) ? false: true;
+    }
+    public static function postNotNull($key){
+        return empty($_POST[$key]) ? false: true;
+    }
+
     /**
      * @param $key
      * @return array|null
@@ -56,4 +63,5 @@ class Request
     {
         return self::getMethod() === 'POST';
     }
+
 }

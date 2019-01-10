@@ -35,7 +35,7 @@
              <span aria-hidden="true">&times;</span>
          </button>
      </div>
-    <?php elseif (\app\lib\Session::isSession('success')):?>
+    <?php elseif (\app\lib\Session::isNotNull('success')):?>
      <div class="alert alert-success alert-dismissible fade show" role="alert">
          <strong>Успех:</strong> <?=\app\lib\Session::get('success');?>
          <?php \app\lib\Session::delete('success'); ?>

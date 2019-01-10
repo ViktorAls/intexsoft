@@ -52,8 +52,9 @@ class Session
      * @param $key
      * @return bool
      */
-    public static function isSession($key)
+    public static function isNotNull($key)
     {
         return empty($_SESSION[$key]) ? false : true;
     }
+
 }

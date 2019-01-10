@@ -33,20 +33,20 @@
 			
 			];
 		}
-		
 
-		/**
-		 * @return mixed
-		 */
+
+        /**
+         * @return mixed
+         * @throws Error
+         */
 		public function XmlAction()
 		{
 			if (Request::isPost()) {
 				$xml = new XmlOrganization;
 				$xml->file($_FILES['file']);
 			} else {
-				return Error::run('404');
+                throw new Error('Страница не найдена',404);
 			}
 		}
-		
 	}
 	

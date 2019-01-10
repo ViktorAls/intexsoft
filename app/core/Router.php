@@ -64,11 +64,15 @@
 					$action = $this->params['action'] . 'Action';
 					if (method_exists($path, $action)) {
 						$controller = new $path($this->params);
-						return $controller->$action();
+						try {
+                            return $controller->$action();
+                        }catch (Error $e){
+                             return $e->run();
+                        }
 					}
 				}
 			}
-			return Error::run(56,'Контроллер или action не найдены');
+//			return Error::run(56,'Контроллер или action не найдены');
 		}
 	}
 	

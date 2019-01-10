@@ -22,16 +22,17 @@
          * @var View
          */
 		protected $views;
-		
-		/**
-		 * BaseController constructor.
-		 * @param $route
-		 */
+
+        /**
+         * BaseController constructor.
+         * @param $route
+         * @throws Error
+         */
 		public function __construct($route)
 		{
 			$this->route = $route;
 			if (!$this->Access()) {
-				Error::run(403);
+                throw new Error('Доступ запрещён',403);
 			}
 			$this->views = new View($route);
 		}
@@ -44,7 +45,7 @@
 			$access = true;
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
-				if (!Session::isSession('role')) {
+				if (!Session::isNotNull('role')) {
 				    Session::set('role','gust');
 				}
 				if (array_key_exists($this->route['action'], $role)) {
