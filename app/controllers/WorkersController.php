@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\lib\Error;
+use app\lib\Request;
 use app\lib\Session;
 use app\models\Worker;
 
@@ -22,12 +23,12 @@ class WorkersController extends AdminController
      */
     public function viewAction()
     {
-        if (!empty($_GET['id'])) {
+        if (Request::getNotNull('id')) {
             $worker = new worker();
-            $user = $worker->one([worker::id => $_GET['id']]);
+            $user = $worker->one([worker::id => Request::get('id')]);
             $user = array_shift($user);
             if (!empty($user)) {
-                $organizations = $worker->workerOrganizations([worker::id => $_GET['id']]);
+                $organizations = $worker->workerOrganizations([worker::id => Request::get('id')]);
                 return $this->views->render('Личные данные работника', ['user' => $user, 'organizations' => $organizations]);
             } else {
                 throw new Error('Страница не найдена', 404);
@@ -52,9 +53,9 @@ class WorkersController extends AdminController
      */
     public function createAction()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (Request::isPost()) {
             $worker = new worker();
-            if ($worker->save($_POST['worker'])) {
+            if ($worker->save(Request::post('worker'))) {
                 $result = ['type' => 'success', 'message' => 'Работник успешно добавлен'];
             } else {
                 $result = ['type' => 'error', 'message' => 'При сохранении произошла ошибка'];
@@ -73,8 +74,8 @@ class WorkersController extends AdminController
     public function updateAction()
     {
         $worker = new worker();
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if ($worker->update($_POST['worker'], [worker::id => $_GET['id']])) {
+        if (Request::isPost()) {
+            if ($worker->update(Request::post('worker'), [worker::id => Request::get('id')])) {
                 $result = ['type' => 'success', 'message' => 'Работник успешно обновлен'];
             } else {
                 $result = ['type' => 'error', 'message' => 'При обнавлении произошла ошибка'];
@@ -82,8 +83,8 @@ class WorkersController extends AdminController
             Session::set($result['type'], $result['message']);
             return header('Location: ' . $_SERVER['REQUEST_URI']);
         } else {
-            if (!empty($_GET['id'])) {
-                $id = $_GET['id'];
+            if (Request::getNotNull('id')) {
+                $id = Request::get('id');
                 $worker = $worker->one([worker::id => $id]);
                 if ($worker) {
                     return $this->views->render('Обновление рабочего', ['worker' => $worker]);
@@ -102,8 +103,8 @@ class WorkersController extends AdminController
      */
     public function deleteAction()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (!empty($_GET['id'])) {
+        if (Request::isPost()) {
+            if (Request::getNotNull('id')) {
                 $worker = new worker();
                 if (!empty($worker->one([worker::id => $_GET['id']]))) {
                     if (!empty($worker->delete([worker::id => $_GET['id']]))) {

@@ -103,7 +103,7 @@ class OrganizationsController extends AdminController
     public function deleteAction()
     {
         if (Request::isPost()) {
-            if (!empty($_GET['id'])) {
+            if (Request::getNotNull('id')) {
                 $organization = new Organization();
                 if (!empty($organization->one([Organization::id => $_GET['id']]))) {
                     if (!empty($organization->delete([Organization::id => $_GET['id']]))) {
@@ -130,7 +130,7 @@ class OrganizationsController extends AdminController
      */
     public function refAction()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (Request::isPost()) {
             if (!empty($_GET['organization']) || !empty($_GET['worker'])) {
                 $workerOrganization = new WorkerOrganization();
                 if ($workerOrganization->ref($_GET['organization'], $_GET['worker']) >= 1) {
