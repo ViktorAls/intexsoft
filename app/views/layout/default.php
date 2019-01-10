@@ -13,37 +13,37 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal"><a href="/">Главная страница</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
-	    <? if($_SESSION['role'] == 'admin'):?>
+	    <?php if(\app\lib\Session::get('role') == 'admin'):?>
             <a class="p-2 text-dark" href="/admin/organization">Оргинизации</a>
             <a class="p-2 text-dark" href="/admin/worker">Работники</a>
 
-            <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
-	    <?elseif ($_SESSION['role'] == 'user'):?>
+            <a class="p-2 text-dark" href="/main/logout">Выход(<?=\app\lib\Session::get('role')?>)</a>
+	    <?php elseif (\app\lib\Session::get('role') == 'user'):?>
             <a class="p-2 text-dark" href="/worker/information">Информация о себе</a>
-            <a class="p-2 text-dark" href="/main/logout">Выход(<?=$_SESSION['role']?>)</a>
-	    <?else:?>
+            <a class="p-2 text-dark" href="/main/logout">Выход(<?=\app\lib\Session::get('role')?>)</a>
+	    <?php else:?>
             <a class="p-2 text-dark" href="/main/login">Вход</a>
-	    <?endif;?>
+	    <?php endif;?>
     </nav>
 </div>
 <div class="container">
- <?if (!empty($_SESSION['error'])):?>
+ <?php if (!empty($_SESSION['error'])):?>
      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-         <strong>Ошибка: </strong><?=$_SESSION['error']?>
-         <? unset($_SESSION['error']); ?>
+         <strong>Ошибка: </strong><?=\app\lib\Session::get('error')?>
+         <?php \app\lib\Session::delete('error'); ?>
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
              <span aria-hidden="true">&times;</span>
          </button>
      </div>
-    <?elseif (!empty($_SESSION['success'])):?>
+    <?php elseif (\app\lib\Session::isSession('success')):?>
      <div class="alert alert-success alert-dismissible fade show" role="alert">
-         <strong>Успех:</strong> <?=$_SESSION['success'];?>
-	     <? unset($_SESSION['success']); ?>
+         <strong>Успех:</strong> <?=\app\lib\Session::get('success');?>
+         <?php \app\lib\Session::delete('success'); ?>
          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
              <span aria-hidden="true">&times;</span>
          </button>
      </div>
-    <?endif;?>
+    <?php endif;?>
     <?=$content?>
     
 </div>

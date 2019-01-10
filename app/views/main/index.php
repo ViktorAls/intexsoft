@@ -18,5 +18,5 @@
         </div>
     <?php endforeach;?>
 <?php else:?>
-    <p>По вашему запросу "<?=$_GET['search']?>" результатов не найдено.</p>
+    <p>По вашему запросу "<?=\app\lib\Request::get('search')?>" результатов не найдено.</p>
 <?php endif;?>

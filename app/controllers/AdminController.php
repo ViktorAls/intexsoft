@@ -11,7 +11,8 @@
 	
 	use app\core\BaseController;
 	use app\lib\Error;
-	use app\lib\XmlOrganization;
+    use app\lib\Request;
+    use app\lib\XmlOrganization;
 	
 	
 	class AdminController extends BaseController
@@ -33,13 +34,13 @@
 			];
 		}
 		
-	
+
 		/**
 		 * @return mixed
 		 */
 		public function XmlAction()
 		{
-			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			if (Request::isPost()) {
 				$xml = new XmlOrganization;
 				$xml->file($_FILES['file']);
 			} else {

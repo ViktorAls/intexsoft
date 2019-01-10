@@ -2,17 +2,18 @@
 	namespace app\models;
 	
 	use app\core\Model;
-	
-	class User extends Model
+    use app\lib\Session;
+
+    class User extends Model
 	{
 		protected $name;
 		protected $password;
-		
+
 		public static function tableName()
 		{
-
+		    return 'user';
 		}
-		
+
 		public function __construct($name, $password)
 		{
 			parent::__construct();
@@ -24,8 +25,8 @@
 		{
 			if ($this->findUser() != 'gust') {
 				$user = $this->findUser();
-				$_SESSION['role'] = $user['role'];
-				$_SESSION['idUser'] = $user['id'];
+				Session::set('role',$user['role']);
+                Session::set('idUser',$user['id']);
 				return true;
 			} else {
 				return false;
@@ -34,9 +35,9 @@
 		
 		public static function logout()
 		{
-			if (!empty($_SESSION)) {
-				unset($_SESSION['idUser']);
-				unset($_SESSION['role']);
+			if (session::isSession('idUser') || session::isSession('role')) {
+			    Session::delete('idUser');
+                Session::delete('role');
 			}
 		}
 		

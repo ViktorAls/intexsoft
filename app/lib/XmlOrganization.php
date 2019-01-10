@@ -38,7 +38,7 @@
 			} else {
 				$result = ['type' => 'error', 'message' => 'Не верный формат файла.'];
 			}
-			$_SESSION[$result['type']] = $result['message'];
+			Session::set($result['type'],$result['message']);
 			return header("Location: " . $_SERVER['HTTP_REFERER']);
 		}
 		

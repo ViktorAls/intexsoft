@@ -10,8 +10,9 @@
 	
 	
 	use app\lib\Error;
-	
-	abstract class BaseController
+    use app\lib\Session;
+
+    abstract class BaseController
 	{
         /**
          * @var array
@@ -43,11 +44,11 @@
 			$access = true;
 			if (method_exists($this, 'before')) {
 				$role = $this->before();
-				if (empty($_SESSION['role'])) {
-					$_SESSION['role'] = 'gust';
+				if (!Session::isSession('role')) {
+				    Session::set('role','gust');
 				}
 				if (array_key_exists($this->route['action'], $role)) {
-					if (!in_array($_SESSION['role'], $role[$this->route['action']])) {
+					if (!in_array( Session::get('role'), $role[$this->route['action']])) {
 						$access = false;
 					}
 				}
