@@ -71,7 +71,7 @@
 							$this->saveConn($idWorker, $idOrganization, $user['rate']);
 						}
 					} else {
-						$worker = new worker();
+						$worker = new Worker();
 						$rate = $user['rate'];
 						unset($user['rate']);
 						$worker->save($user);

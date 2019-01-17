@@ -35,6 +35,9 @@ class MainController extends BaseController
 
     }
 
+    /**
+     * @return mixed
+     */
     public function loginAction()
     {
         if (!Session::isNotNull('role') || Session::get('role') == 'gust') {
